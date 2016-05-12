@@ -64,6 +64,6 @@ com_crashlytics_export_strings.xml
 ehthumbs.db
 Thumbs.db
 
-
+node_modules
 
 !config/schema.sql
