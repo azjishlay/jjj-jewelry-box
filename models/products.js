@@ -1,38 +1,58 @@
 // require the sequelize npm app
 var Sequelize = require("sequelize"); 
 
-// require the connection to the db
+// require the connection to the DB
 var sequelize = require("../config/connection.js"); 
 
-// "kwerry" model that matches up with DB
-var kwerry = sequelize.define("kwerry", {
-	id: {
-		type: Sequelize.INTEGER,
-		autoIncrement: true,
+// create model that matches up with DB
+var products = sequelize.define("products", {
+	item_id: {
+		type: Sequelize.INTEGER(11),
 		primaryKey: true
 	},
-	title: {
-		type: Sequelize.STRING
+	category_id: {
+		type: Sequelize.INTEGER(11),
 	},
-	content: {
-		type: Sequelize.STRING
+	sku: {
+		type: Sequelize.INTEGER(11),
 	},
-	date_created: {
-		type: Sequelize.DATE
+	serial_number: {
+		type: Sequelize.INTEGER(11),
 	},
-	user_fk: {
-		type: Sequelize.INTEGER
+	name: {
+		type: Sequelize.STRING(255),
 	},
-	points: {
-		type: Sequelize.INTEGER
+	designer: {
+		type: Sequelize.STRING(255),
+	},
+	cost: {
+		type: Sequelize.DECIMAL(10, 2),
+	},
+	price: {
+		type: Sequelize.DECIMAL(10, 2),
+	},
+	quantity: {
+		type: Sequelize.INTEGER(11),
+	},
+	metal: {
+		type: Sequelize.STRING(255),
+	},
+	size: {
+		type: Sequelize.INTEGER(4),
+	},
+	description: {
+		type: Sequelize.STRING(255),
+	},
+	image_url: {
+		type: Sequelize.STRING(255),
 	}
 });
 
-// Syncs with DB
-kwerry.sync({force: true}).then(function () {
+// sync with DB
+products.sync({force: true}).then(function () {
   // Table created
-  console.log('kwerry table created')
+  console.log('created table: products')
 });
 
-// Makes the kwerry Model available for other files (will also create a table)
-module.exports = kwerry;
+// make model available to others
+module.exports = products;
