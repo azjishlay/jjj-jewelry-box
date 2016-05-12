@@ -34,18 +34,65 @@
 <body>
 	
 	<div class="row mainRow">
-
 		<div class="sidebar col s2">
 			<div class="sideContainer">
-				<a href="index.html" class="brand-logo"><img id="headerLogo" src="assets/images/kwerries_logo.png" alt="kwerries logo"></a>
-				<ul>
-					<li>Clients</li>
-					<li>Products</li>
-					<li>Work Orders</li>
-					<li>Invoices</li>
-					<li>Employees</li>
-					<li>Logout</li>
+				<a href="index.html" class="brand-logo"><img id="headerLogo" src="assets/images/theJewelryBox-Top.png" alt="the JJJ Jewelry box logo"></a>
+				<ul class="collapsible" data-collapsible="accordion">
+					<li><a href="/"><i class="material-icons">web</i>Dashboard</a></li>
+					<li>
+						<div class="collapsible-header"><i class="material-icons md-light">account_box</i>Clients</div>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="/search-clients">Client Search</a></li>
+								<li><a href="/my-clients">All My Clients</a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header"><i class="material-icons md-light">watch</i>Products</div>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="/search-products">Product Search</a></li>
+								<li><a href="/all-products">All Products</a></li>
+								<li><a href="/create-products">Create Product</a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header"><i class="material-icons md-light">description</i>Invoices</div>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="/my-clients">Create New Invoice</a></li>
+								<li><a href="/search-clients">Invoice Search</a></li>
+								<li><a href="/my-clients">All Invoices</a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header"><i class="material-icons md-light">build</i>Work Orders</div>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="/my-clients">Create New Work Order</a></li>
+								<li><a href="/search-clients">Work Order Search</a></li>
+								<li><a href="/my-clients">All Work Orders</a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header"><i class="material-icons md-light">face</i>Employees</div>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="/search-clients">Employee Search</a></li>
+								<li><a href="/my-clients">All Employees</a></li>
+								<li><a href="/my-clients">Create New Employee</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a href="/logout"><i class="material-icons">power_settings_new</i>Logout</a></li>
 				</ul>
+				<div class="footer center-align">
+					© 2016 - thejjjjewelrybox.com
+				</div>
 			</div>
 		</div>
 		<div class="mainContent col s10">
@@ -93,11 +140,13 @@
 		</div>
 	</div>
 	
-	<script type="text/javascript" src="assets/js/home.js"></script>
-	<script type="text/javascript" src="assets/js/auth.js"></script>
-	<script type="text/javascript" src="assets/js/account.js"></script>
-	<script type="text/javascript" src="assets/js/login.js"></script>
-	<script type="text/javascript" src="assets/js/question.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.collapsible').collapsible({
+				accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+			});
+		});
+	</script>
 
 </body>
 </html>
