@@ -3,6 +3,10 @@ html, body {
 	height: 100%;
 }
 
+body {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
 .mainRow {
 	height: 100%;
 	width: 100%;
@@ -15,8 +19,72 @@ html, body {
 	margin: 40px auto;
 }
 
-body {
-	font-family: 'Josefin Sans', sans-serif;
+#headerLogo {
+    max-width: 100%;
+}
+
+.collapsible{
+	border:none;
+}
+
+.collapsible-header {
+	background-color: #000;
+	border:none;
+
+}
+
+.collapsible-header:hover  {
+	color:#039be5;
+}
+
+.collapsible li a {
+    display: block;
+    cursor: pointer;
+    min-height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    color:#fff;
+}
+
+.collapsible li a i {
+    width: 2rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.collapsible li a:hover {
+    color:#039be5;
+}
+
+.collapsible-body{
+	border:none;
+}
+
+.collapsible-body ul li {
+	text-align: center;
+}
+
+.collapsible-body ul li a{
+	color:#fff;
+	font-size: 12px;
+	line-height: 1.5em;
+    min-height: 1.5rem;
+}
+
+.collapsible-body ul li a:hover {
+	color: #039be5;
+	text-decoration: none;
+}
+
+.footer {
+	position: absolute;
+	padding-bottom: 10px;
+	bottom:0;
+	color: #fff;
 }
 
 span.badge {
@@ -37,16 +105,16 @@ span.badge {
 }
 
 .card-panel {
-    background-color: #b9354a;
+    background-color: #039be5;
     color: #ffafad;
 }
 
 h1 {
-	color: #b9354a;
+	color: #039be5;
 }
 
 h2 {
-	color: #b9354a;
+	color: #039be5;
 }
 
 #cancel {
