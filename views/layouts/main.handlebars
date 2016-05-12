@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>kwerries - Ask and ye shall receive an answer!</title>
+	
+	<!-- Favicon image -->
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+	<!-- Standard reset.css from http://meyerweb.com/eric/tools/css/reset/ -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<!-- Josefin Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,300,300italic,400italic,600,600italic,700,100italic|Josefin+Slab:400,400italic,600,600italic,700,300' rel='stylesheet' type='text/css'>
+	<!-- Materiallize - icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Materiallize - Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<!-- Our custom css file -->	
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<!-- Minified jquery -->
+	<script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+	<!-- Materiallize - Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+	<!-- link to firebase -->
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+	<!-- moment.js -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+</head>
+<body>
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper container">
+				<a href="index.html" class="brand-logo"><img id="headerLogo" src="assets/images/kwerries_logo.png" alt="kwerries logo"></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<!--
+					<li><a class="dropdown-button" href="#!" data-activates="dropdown1">categories<i class="material-icons right">arrow_drop_down</i></a></li>
+					-->
+					<li><a href="kwerry.html">create kwerry</a></li>
+					<li><a id="account"><i class="material-icons">perm_identity</i></a></li>
+				</ul>
+				<ul id="dropdown1" class="dropdown-content">
+					<li><a href="#!">one</a></li>
+					<li><a href="#!">two</a></li>
+					<li><a href="#!">three</a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a class="dropdown-button" href="#!" data-activates="dropdown1">category<i class="material-icons right">arrow_drop_down</i></a></li>
+					<li><a href="kwerry.html">new kwerry</a></li>
+					<li><a href="account.html"><i class="material-icons">perm_identity</i></a></li>
+				</ul>
+				<form class="purple lighten-3">
+					<div class="input-field">
+						<input id="search" type="search"/>
+						<label for="search"><i class="material-icons">search</i></label><i class="material-icons">close</i>
+					</div>
+				</form>
+			</div>
+		</nav>
+	</div>
+
+	<div class="container">
+		{{{body}}}
+	</div>
+	
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="">welcome to kwerries.com</h5>
+					<p class="">we are a community for learning. need some help? ask a question in a kwerry and learn something new. just learned something new? create a kwerry so that other people can learn with you. just keep the conversation going to keep the learning going!</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="">site</h5>
+					<ul>
+						<li><a class="" href="index.html">home</a></li>
+						<li><a class="" href="login.html">account</a></li>
+						<li><a class="" href="kwerry.html">create kwerry</a></li>
+						<li><a class="" href="#!">view kwerries</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container center-align">
+				© 2016 - kwerries.com
+			</div>
+		</div>
+	</footer>
+	
+	<!-- Modal1 -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h4 id="modal1Header"></h4>
+			<p id="modal1Text"></p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Kewl</a>
+		</div>
+	</div>
+
+	<!-- Login Modal-->
+	<div id="modalLogin" class="modal">
+		<div class="modal-content">
+			<h4 id="modalLoginHeader"></h4>
+			<p id="modalLoginText">
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">email</i>
+						<input id="loginEmail" type="email" class="validate">
+						<label for="email" data-error="please enter a valid email">Enter Your Email</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="material-icons prefix">lock_outline</i>
+						<input id="loginPassword" type="password" class="validate">
+						<label for="icon_prefix">Choose A Password</label>
+					</div>
+				</div>
+			</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn waves-effect waves-light" type='button' id="loginSubmit">Submit
+				<i class="material-icons right">send</i>
+			</button>
+			<button class="btn waves-effect waves-light" type='button' id="cancel">Cancel
+				<i class="material-icons right">close</i>
+			</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="assets/js/home.js"></script>
+	<script type="text/javascript" src="assets/js/auth.js"></script>
+	<script type="text/javascript" src="assets/js/account.js"></script>
+	<script type="text/javascript" src="assets/js/login.js"></script>
+	<script type="text/javascript" src="assets/js/question.js"></script>
+
+</body>
+</html>

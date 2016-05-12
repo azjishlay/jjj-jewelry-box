@@ -1,0 +1,91 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+	width: 90%;
+}
+
+span.badge {
+	position: relative;
+	right:0;
+}
+
+nav {
+    background-color: #9932CD;
+}
+
+footer.page-footer {
+    background-color: #9932CD;
+}
+
+.btn, .btn-large {
+    background-color: #00a651;
+    color:#fff;
+    text-transform: lowercase;
+}
+
+nav form {
+  margin-left: 180px;
+  width: 300px;
+}
+
+#headerLogo {
+	max-height: 55px;
+	margin-top: 5px;
+}
+
+.card-panel {
+    background-color: #b9354a;
+    color: #ffafad;
+}
+
+h1 {
+	color: #b9354a;
+}
+
+h2 {
+	color: #b9354a;
+}
+
+.page-footer h5 {
+	color: #ffafad;
+}
+
+.page-footer p, .page-footer ul li a {
+	color: #fff;
+}
+
+#cancel {
+	margin-right: 15px;
+}
+
+#modalLogin {
+	overflow: hidden;
+}
+
+#modalLogin .modal-footer {
+	padding: 0px 35px;
+}
+
+.smallSquareLogo {
+	max-width: 30px;
+	height: auto;
+}
+
+.createkwerry {
+	margin-top: 25px;
+}
+
+.parallax-container {
+	height: 300px;
+}
+
+.singleKwerry td {
+	
+}
