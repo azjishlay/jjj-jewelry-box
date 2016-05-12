@@ -66,4 +66,4 @@ Thumbs.db
 
 node_modules
 
-!config/schema.sql
+!app/config/schema.sql
