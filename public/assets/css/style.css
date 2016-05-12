@@ -3,12 +3,20 @@ html, body {
 	height: 100%;
 }
 
-body {
-	font-family: 'Josefin Sans', sans-serif;
+.mainRow {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	margin-bottom: 0px;
 }
 
-.container {
+.sideContainer {
 	width: 90%;
+	margin: 40px auto;
+}
+
+body {
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 span.badge {
@@ -16,28 +24,16 @@ span.badge {
 	right:0;
 }
 
-nav {
-    background-color: #9932CD;
-}
-
-footer.page-footer {
-    background-color: #9932CD;
+.sidebar {
+	background-color: black;
+	height: 100%;
+	color:white;
 }
 
 .btn, .btn-large {
     background-color: #00a651;
     color:#fff;
     text-transform: lowercase;
-}
-
-nav form {
-  margin-left: 180px;
-  width: 300px;
-}
-
-#headerLogo {
-	max-height: 55px;
-	margin-top: 5px;
 }
 
 .card-panel {
@@ -51,14 +47,6 @@ h1 {
 
 h2 {
 	color: #b9354a;
-}
-
-.page-footer h5 {
-	color: #ffafad;
-}
-
-.page-footer p, .page-footer ul li a {
-	color: #fff;
 }
 
 #cancel {
@@ -78,14 +66,11 @@ h2 {
 	height: auto;
 }
 
-.createkwerry {
-	margin-top: 25px;
+.sidebar {
+	height: 100%;
 }
 
-.parallax-container {
-	height: 300px;
-}
-
-.singleKwerry td {
-	
+.mainContent {
+	height: 100%;
+	overflow-y: scroll;
 }

@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>kwerries - Ask and ye shall receive an answer!</title>
+	<title>JJJ - Jewelry Box - Run The Jewelry (Store)!</title>
 	
 	<!-- Favicon image -->
 	<link rel="shortcut icon" type="image/ico" href="favicon.ico" />
@@ -32,66 +32,26 @@
 
 </head>
 <body>
-	<div class="navbar-fixed">
-		<nav>
-			<div class="nav-wrapper container">
-				<a href="index.html" class="brand-logo"><img id="headerLogo" src="assets/images/kwerries_logo.png" alt="kwerries logo"></a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-					<!--
-					<li><a class="dropdown-button" href="#!" data-activates="dropdown1">categories<i class="material-icons right">arrow_drop_down</i></a></li>
-					-->
-					<li><a href="kwerry.html">create kwerry</a></li>
-					<li><a id="account"><i class="material-icons">perm_identity</i></a></li>
-				</ul>
-				<ul id="dropdown1" class="dropdown-content">
-					<li><a href="#!">one</a></li>
-					<li><a href="#!">two</a></li>
-					<li><a href="#!">three</a></li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li><a class="dropdown-button" href="#!" data-activates="dropdown1">category<i class="material-icons right">arrow_drop_down</i></a></li>
-					<li><a href="kwerry.html">new kwerry</a></li>
-					<li><a href="account.html"><i class="material-icons">perm_identity</i></a></li>
-				</ul>
-				<form class="purple lighten-3">
-					<div class="input-field">
-						<input id="search" type="search"/>
-						<label for="search"><i class="material-icons">search</i></label><i class="material-icons">close</i>
-					</div>
-				</form>
-			</div>
-		</nav>
-	</div>
-
-	<div class="container">
-		{{{body}}}
-	</div>
 	
-	<footer class="page-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="">welcome to kwerries.com</h5>
-					<p class="">we are a community for learning. need some help? ask a question in a kwerry and learn something new. just learned something new? create a kwerry so that other people can learn with you. just keep the conversation going to keep the learning going!</p>
-				</div>
-				<div class="col l4 offset-l2 s12">
-					<h5 class="">site</h5>
-					<ul>
-						<li><a class="" href="index.html">home</a></li>
-						<li><a class="" href="login.html">account</a></li>
-						<li><a class="" href="kwerry.html">create kwerry</a></li>
-						<li><a class="" href="#!">view kwerries</a></li>
-					</ul>
-				</div>
+	<div class="row mainRow">
+
+		<div class="sidebar col s2">
+			<div class="sideContainer">
+				<a href="index.html" class="brand-logo"><img id="headerLogo" src="assets/images/kwerries_logo.png" alt="kwerries logo"></a>
+				<ul>
+					<li>Clients</li>
+					<li>Products</li>
+					<li>Work Orders</li>
+					<li>Invoices</li>
+					<li>Employees</li>
+					<li>Logout</li>
+				</ul>
 			</div>
 		</div>
-		<div class="footer-copyright">
-			<div class="container center-align">
-				© 2016 - kwerries.com
-			</div>
+		<div class="mainContent col s10">
+			{{{body}}}	
 		</div>
-	</footer>
+	</div>
 	
 	<!-- Modal1 -->
 	<div id="modal1" class="modal">
