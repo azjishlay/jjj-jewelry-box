@@ -35,7 +35,7 @@ var employees = sequelize.define("employees", {
 });
 
 // Syncs with DB
-employees.sync({force: true}).then(function () {
+employees.sync({}).then(function () {
   // Table created
   console.log('employees table created')
 });
