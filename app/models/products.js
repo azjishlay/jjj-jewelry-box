@@ -35,7 +35,7 @@ var products = sequelize.define("products", {
 	quantity: {
 		type: Sequelize.INTEGER(11),
 	},
-	metal: {
+	materials: {
 		type: Sequelize.STRING(255),
 	},
 	size: {
