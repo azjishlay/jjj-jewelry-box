@@ -33,7 +33,7 @@ var invoices = sequelize.define("invoices", {
 		type: Sequelize.FLOAT
 	},
 	payment_type: {
-		type: Sequelize.FLOAT
+		type: Sequelize.VARCHAR
 	}
 });
 
