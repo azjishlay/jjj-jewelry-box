@@ -8,6 +8,7 @@ var sequelize = require("../config/connection.js");
 var products = sequelize.define("products", {
 	id: {
 		type: Sequelize.INTEGER(11),
+		autoIncrement: true,
 		primaryKey: true
 	},
 	category_id: {
