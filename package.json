@@ -19,9 +19,14 @@
   "homepage": "https://github.com/lijasminej/jjj-jewelry-box#readme",
   "dependencies": {
     "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.13.0",
     "mysql": "^2.10.2",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^3.23.0"
   }
 }
