@@ -6,7 +6,7 @@ var sequelize = require("../config/connection.js");
 
 // create model that matches up with DB
 var products = sequelize.define("products", {
-	item_id: {
+	id: {
 		type: Sequelize.INTEGER(11),
 		primaryKey: true
 	},
@@ -49,7 +49,7 @@ var products = sequelize.define("products", {
 });
 
 // sync with DB
-products.sync({force: true}).then(function () {
+products.sync({}).then(function () {
   // Table created
   console.log('created table: products')
 });

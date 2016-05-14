@@ -38,7 +38,7 @@ var invoices = sequelize.define("invoices", {
 });
 
 // Syncs with DB
-invoices.sync({force: true}).then(function () {
+invoices.sync({}).then(function () {
   // Table created
   console.log('invoices table created')
 });

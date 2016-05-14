@@ -35,7 +35,7 @@ var line_items = sequelize.define("line_items", {
 });
 
 // Syncs with DB
-line_items.sync({force: true}).then(function () {
+line_items.sync({}).then(function () {
   // Table created
   console.log('line_items table created')
 });
