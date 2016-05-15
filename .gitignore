@@ -65,5 +65,4 @@ ehthumbs.db
 Thumbs.db
 
 node_modules
-
-!app/config/schema.sql
+app/config
