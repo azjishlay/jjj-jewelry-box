@@ -1,0 +1,28 @@
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Trans #</th>
+        <th>Employee</th>
+        <th>Customer</th>
+        <th>Subtotal</th>
+        <th>Tax</th>
+        <th>Total</th>
+        <th>Details</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each invoice}}
+        <tr>
+            <th scope=row>{{id}}</th>
+            <td>{{employee.name}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{subtotal}}</td>
+            <td>{{tax}}</td>
+            <td>{{total}}</td>
+            <td><span id="lineItems">view</span></td>
+            <td>{{date}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
