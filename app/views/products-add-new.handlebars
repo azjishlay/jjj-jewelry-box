@@ -1,56 +1,139 @@
+<!--Page Header-->
+<div class="page-header">
+    <div class="container">
+        <h4 class="page-title">Add new product</h4>
+    </div>
+</div>
+
 <!--Add New Product-->
 
-<div class="main">
-    <div id="content">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 s12">
+
+                <div class="card-panel">
 
                     <!-- FORM -->
-                    <section class="form-content">
-                        <div class="tab-pane">
-                            <h3>Enter product details</h3>
-                            <div class="lighter"><p>Subtext goes here</p></div>
-                            <div class="spacer-10"></div>
-
-                            <div class="tab-content">
-                                <form action="/add-new" method="POST" role="form">
-
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-                                            <label for="first_name">First Name</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <input id="last_name" type="text" class="validate">
-                                            <label for="last_name">Last Name</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-                                        <a class="waves-effect waves-light btn">button</a>
-                                    </div>
-
-
-
-
-                                </form>
+                    <div class="row">
+                        <form class="col s12 form-add-new" action="/add-new" method="POST" role="form">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <select id="product_category_id" name="product_category_id">
+                                        <option value="" disabled selected>Select</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                    <label for="product_category_id">Product Category:</label>
+                                </div>
                             </div>
 
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="product_sku" name="product_sku" type="text" class="validate">
+                                    <label for="product_sku">SKU:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="product_serial_number" name="product_serial_number" type="text" class="validate">
+                                    <label for="product_serial_number">Serial Number:</label>
+                                </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="product_name" name="product_name" type="text" class="validate">
+                                    <label for="product_name">Product Name:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="product_designer" name="product_designer" type="text" class="validate">
+                                    <label for="product_designer">Designer/Brand:</label>
+                                </div>
+                            </div>
 
-                        </div>
-                    </section>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="product_description" name="product_description" class="validate materialize-textarea" length="600"></textarea>
+                                    <label for="product_description" class="">Product Description:</label>
+                                </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="product_materials" name="product_materials" class="validate materialize-textarea" length="120"></textarea>
+                                    <label for="product_materials" class="">Product Materials:</label>
+                                </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="product_img_url" name="product_img_url" type="text" class="validate">
+                                    <label for="product_img_url" class="">Product Image URL:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s6 numerical">
+                                    <input id="product_size" name="product_size" type="text" class="validate">
+                                    <label for="product_size" class="">Product Size:</label>
+                                </div>
+                                <div class="input-field col s6 numerical">
+                                    <input id="product_quantity" name="product_quantity" type="text" class="validate" maxlength="11" />
+                                    <label for="product_quantity" class="">Quantity Available:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="inline-group col s6">
+                                    <div class="inline-label">Unit Cost:</div>
+                                    <div class="inline-input row">
+                                        <div class="input-field col s8 numerical">
+                                            <i class="prefix">$</i>
+                                            <input id="product_cost_dollars" name="product_cost_dollars" type="text" class="validate" maxlength="8" />
+                                            <label for="product_cost_dollars" class=""> </label>
+                                        </div>
+                                        <div class="input-field col s4 numerical">
+                                            <i class="prefix">.</i>
+                                            <input id="product_cost_cents" name="product_cost_cents" type="text" class="validate" maxlength="2" />
+                                            <label for="product_cost_cents" class=""> </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inline-group col s6">
+                                    <div class="inline-label">Unit Price:</div>
+                                    <div class="inline-input row">
+                                        <div class="input-field col s8 numerical">
+                                            <i class="prefix">$</i>
+                                            <input id="product_price_dollars" name="product_price_dollars" type="text" class="validate" maxlength="8" />
+                                            <label for="product_price_dollars" class=""> </label>
+                                        </div>
+                                        <div class="input-field col s4 numerical">
+                                            <i class="prefix">.</i>
+                                            <input id="product_price_cents" name="product_price_cents" type="text" class="validate" maxlength="2" />
+                                            <label for="product_price_cents" class=""> </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="spacer-10"></div>
+                                <div class="input-field col s12 right-align">
+                                    <a class="btn">Reset</a>
+                                    <a class="btn">Submit</a>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </div>
 </div>
+
+
+
+<!--Formatter-->
+<script src="assets/js/plugins/formatter/jquery.formatter.min.js"></script>
+<script src="assets/js/products.js"></script>
