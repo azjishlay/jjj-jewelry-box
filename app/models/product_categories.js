@@ -17,7 +17,7 @@ var product_categories = sequelize.define("categories", {
 });
 
 // sync with DB
-product_categories.sync({force: true}).then(function () {
+product_categories.sync({}).then(function () {
   // Table created
   console.log('created table: product categories')
 });
