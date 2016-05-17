@@ -27,7 +27,7 @@
                 <tr>
                     <th scope=row>{{id}}</th>
                     <td>{{employee.name}}</td>
-                    <td>{{customer.name}}</td>
+                    <td>{{client.first_name}} {{client.last_name}}</td>
                     <td>{{subtotal}}</td>
                     <td>{{taxes}}</td>
                     <td>{{total}}</td>
@@ -36,7 +36,7 @@
                 </tr>
                 <tr id="lineItems{{id}}" style="display:none">
                     <td colspan="8" style="padding: 15px 50px">
-                        <table class="table table-bordered table-striped productTable">
+                        <table class="table table-bordered table-striped z-depth-2 productTable">
                             <thead>
                             <tr>
                                 <th>Product</th>
