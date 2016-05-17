@@ -65,6 +65,9 @@ var clients = sequelize.define("clients", {
 	favorites: {
 		type: Sequelize.STRING
 	},
+	employee_id: {
+		type: Sequelize.STRING
+	}
 });
 
 // Syncs with DB
