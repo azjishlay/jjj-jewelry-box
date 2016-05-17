@@ -1,28 +1,68 @@
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th>Trans #</th>
-        <th>Employee</th>
-        <th>Customer</th>
-        <th>Subtotal</th>
-        <th>Tax</th>
-        <th>Total</th>
-        <th>Details</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#each invoice}}
-        <tr>
-            <th scope=row>{{id}}</th>
-            <td>{{employee.name}}</td>
-            <td>{{customer.name}}</td>
-            <td>{{subtotal}}</td>
-            <td>{{tax}}</td>
-            <td>{{total}}</td>
-            <td><span id="lineItems">view</span></td>
-            <td>{{date}}</td>
-        </tr>
-    {{/each}}
-    </tbody>
-</table>
+<!--Page Header-->
+<div class="page-header">
+    <div class="container">
+        <h4 class="page-title">All Invoices</h4>
+    </div>
+</div>
+
+<!--Add New Product-->
+
+<div class="page-content">
+    <div class="container">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Trans #</th>
+                <th>Employee</th>
+                <th>Customer</th>
+                <th>Subtotal</th>
+                <th>Tax</th>
+                <th>Total</th>
+                <th>Products</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#invoice}}
+                <tr>
+                    <th scope=row>{{id}}</th>
+                    <td>{{employee.name}}</td>
+                    <td>{{customer.name}}</td>
+                    <td>{{subtotal}}</td>
+                    <td>{{taxes}}</td>
+                    <td>{{total}}</td>
+                    <td><span class="view" id="{{id}}" style="cursor:pointer;">view</span></td>
+                    <td>{{date_created}}</td>
+                </tr>
+                <tr id="lineItems{{id}}" style="display:none">
+                    <td colspan="8" style="padding: 15px 50px">
+                        <table class="table table-bordered table-striped productTable">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Discount</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#line_items}}
+                                <tr>
+                                    <td>{{product.name}}</td>
+                                    <td>{{unit_price}}</td>
+                                    <td>{{quantity}}</td>
+                                    <td>{{discount}}</td>
+                                    <td>{{total}}</td>
+                                </tr>
+                            {{/line_items}}
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            {{/invoice}}
+            </tbody>
+        </table>
+    </div>
+</div>
+

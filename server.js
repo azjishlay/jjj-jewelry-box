@@ -32,10 +32,8 @@ var map = sitemap({
 });
 
 app.get('/sitemap.xml', function(req, res) { // send XML map
-
     map.XMLtoWeb(res);
 }).get('/robots.txt', function(req, res) { // send TXT map
-
     map.TXTtoWeb(res);
 });
 
@@ -43,8 +41,12 @@ app.get('/sitemap.xml', function(req, res) { // send XML map
 require("./app/routes/apiRoutes.js")(app)
 require("./app/routes/htmlRoutes.js")(app)
 
+// require all of the database connections
+require("./app/models/db_relations.js")(app)
+
+
 // start the server
 var PORT = process.env.PORT || 8080;
 app.listen(PORT, function(){
 	console.log('Find the magic at port: ' + PORT);
-})
+});
