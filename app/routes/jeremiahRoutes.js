@@ -13,6 +13,8 @@ module.exports = function(app){
             include:[{
                 model: users
             },{
+                model: clients
+            },{
                 model: line_items,
                 include:[products]
             }]
