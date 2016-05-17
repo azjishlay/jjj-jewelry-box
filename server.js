@@ -25,6 +25,10 @@ app.set('views', __dirname + '/app/views');
 var staticContentFolder = __dirname + '/app/public';
 app.use(express.static(staticContentFolder));
 
+// express sitemap app
+var sitemap = require('express-sitemap')();
+sitemap.generate(app);
+
 // require the api and html paths
 require("./app/routes/apiRoutes.js")(app)
 require("./app/routes/htmlRoutes.js")(app)
