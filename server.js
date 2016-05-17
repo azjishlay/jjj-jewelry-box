@@ -26,15 +26,25 @@ var staticContentFolder = __dirname + '/app/public';
 app.use(express.static(staticContentFolder));
 
 // express sitemap app
-var sitemap = require('express-sitemap')();
-sitemap.generate(app);
+var sitemap = require('express-sitemap');
+var map = sitemap({
+    generate: app
+});
+
+app.get('/sitemap.xml', function(req, res) { // send XML map
+
+    map.XMLtoWeb(res);
+}).get('/robots.txt', function(req, res) { // send TXT map
+
+    map.TXTtoWeb(res);
+});
 
 // require the api and html paths
 require("./app/routes/apiRoutes.js")(app)
 require("./app/routes/htmlRoutes.js")(app)
 
 // start the server
-var PORT = process.env.PORT || 80;
+var PORT = process.env.PORT || 8080;
 app.listen(PORT, function(){
 	console.log('Find the magic at port: ' + PORT);
 })
