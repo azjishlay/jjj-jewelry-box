@@ -23,6 +23,7 @@
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.13.0",
+    "express-sitemap": "^1.6.3",
     "formatter.js": "^0.1.5",
     "mysql": "^2.10.2",
     "passport": "^0.3.2",
