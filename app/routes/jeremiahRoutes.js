@@ -19,9 +19,9 @@ module.exports = function(app){
                 include:[products]
             }]
         }).then(function(result){
-            var data = {'invoice':result};
+            var data = {'invoices':result};
             //res.json(data);
-            res.render('invoice', data);
+            res.render('invoices', data);
         });
     });
 

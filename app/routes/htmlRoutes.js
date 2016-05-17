@@ -37,8 +37,8 @@ module.exports = function(app){
 	res.render('products-add-new');
 	});
 
-	app.get('/invoice', function(req, res){
-	res.render('invoice');
+	app.get('/invoices', function(req, res){
+	res.render('invoices');
 	});
 
 	app.get('/create-invoice', function(req, res){
