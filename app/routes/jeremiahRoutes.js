@@ -9,6 +9,7 @@ var passport = require('passport');
 module.exports = function(app){
 
     app.get('/invoice', function(req, res){
+        invoices.
         res.render('invoice');
     });
 
