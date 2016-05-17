@@ -1,16 +1,19 @@
 // require the sequelize npm app
 var Sequelize = require("sequelize"); 
 
-// require the connection to the db
+// require the connection to the DB
 var sequelize = require("../config/connection.js"); 
 
-// "group" model that matches up with DB
+// model that matches up with DB
 var clients = sequelize.define("clients", {
 	id: {
 		type: Sequelize.INTEGER,
 		autoIncrement: true,
 		primaryKey: true
 	},
+	employee_id: {
+		type: Sequelize.INTEGER
+	}
 	photo_url: {
 		type: Sequelize.STRING
 	},
@@ -42,7 +45,7 @@ var clients = sequelize.define("clients", {
 		type: Sequelize.STRING
 	},
 	family_members: {
-	type: Sequelize.STRING
+		type: Sequelize.STRING
 	},
 	anniversary: {
 		type: Sequelize.DATE
@@ -64,14 +67,11 @@ var clients = sequelize.define("clients", {
 	},
 	favorites: {
 		type: Sequelize.STRING
-	},
+	}
 });
 
-// Syncs with DB
 clients.sync({}).then(function () {
-  // Table created
-  console.log('clients table created')
+  console.log('created table: clients')
 });
 
-// Makes the employees Model available for other files (will also create a table)
 module.exports = clients;
