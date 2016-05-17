@@ -7,12 +7,12 @@ var sequelize = require("../config/connection.js");
 // create model that matches up with DB
 var product_categories = sequelize.define("categories", {
 	id: {
-		type: Sequelize.INTEGER(11),
+		type: Sequelize.INTEGER,
 		autoIncrement: true,
 		primaryKey: true,
 	},
 	name: {
-		type: Sequelize.STRING(255),
+		type: Sequelize.STRING,
 	}
 });
 

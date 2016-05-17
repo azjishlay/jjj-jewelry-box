@@ -7,45 +7,45 @@ var sequelize = require("../config/connection.js");
 // create model that matches up with DB
 var products = sequelize.define("products", {
 	id: {
-		type: Sequelize.INTEGER(11),
+		type: Sequelize.INTEGER,
 		autoIncrement: true,
 		primaryKey: true
 	},
 	category_id: {
-		type: Sequelize.INTEGER(11),
+		type: Sequelize.INTEGER
 	},
 	sku: {
-		type: Sequelize.INTEGER(11),
+		type: Sequelize.INTEGER
 	},
 	serial_number: {
-		type: Sequelize.INTEGER(11),
+		type: Sequelize.INTEGER
 	},
 	name: {
-		type: Sequelize.STRING(255),
+		type: Sequelize.STRING
 	},
 	designer: {
-		type: Sequelize.STRING(255),
+		type: Sequelize.STRING
 	},
 	cost: {
-		type: Sequelize.DECIMAL(10, 2),
+		type: Sequelize.DECIMAL
 	},
 	price: {
-		type: Sequelize.DECIMAL(10, 2),
+		type: Sequelize.DECIMAL
 	},
 	quantity: {
-		type: Sequelize.INTEGER(11),
+		type: Sequelize.INTEGER
 	},
 	materials: {
-		type: Sequelize.STRING(255),
+		type: Sequelize.STRING
 	},
 	size: {
-		type: Sequelize.INTEGER(4),
+		type: Sequelize.INTEGER
 	},
 	description: {
-		type: Sequelize.STRING(255),
+		type: Sequelize.STRING
 	},
 	image_url: {
-		type: Sequelize.STRING(255),
+		type: Sequelize.STRING
 	}
 });
 
