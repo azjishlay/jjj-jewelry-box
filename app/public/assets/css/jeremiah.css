@@ -10,7 +10,7 @@ td, th {
     margin-top: 20px;
 }
 
-.productTable{
-
-
+.page-header, .page-content {
+    max-width:90%;
+    margin: 0px auto;
 }
