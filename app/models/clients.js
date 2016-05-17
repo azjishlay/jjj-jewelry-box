@@ -13,7 +13,7 @@ var clients = sequelize.define("clients", {
 	},
 	employee_id: {
 		type: Sequelize.INTEGER
-	}
+	},
 	photo_url: {
 		type: Sequelize.STRING
 	},
