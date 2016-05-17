@@ -68,10 +68,10 @@ var clients = sequelize.define("clients", {
 });
 
 // Syncs with DB
-employees.sync({}).then(function () {
+clients.sync({}).then(function () {
   // Table created
-  console.log('employees table created')
+  console.log('clients table created')
 });
 
 // Makes the employees Model available for other files (will also create a table)
-module.exports = employees;
+module.exports = clients;
