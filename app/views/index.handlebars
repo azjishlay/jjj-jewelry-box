@@ -1,1 +1,83 @@
-<h1>Index Page</h1>
+<div>
+{{#if  isAuthenticated}}
+    <!--Page Header-->
+<div class="page-header">
+    <div class="container">
+        <h4 class="page-title">Hello {{user.name}}!</h4>
+
+        <img src="{{user.photo}}" style="width: 50px;" alt="User Photo">
+
+    </div>
+
+</div>
+
+<!--page content-->
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                Current Sales: {{user.sales}}
+            </div>
+            <div class="col-md-1">
+                Sales Goal: {{user.sales_goal}}
+            </div>
+            <div class="col-md-1">
+                Performance: {{user.performance}}%
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div id="piechart" style="width: 600px; height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{{else}}
+    <!--Page Header-->
+    <div class="page-header">
+        <div class="container">
+            <h4 class="page-title">Welcome to the Jewelry Box!</h4>
+        </div>
+    </div>
+
+    <!--page content-->
+
+    <div class="page-content">
+        <div class="container">
+            <p>Description of the site.</p>
+            <span><a href="/login">Log In Here</a></span>
+        </div>
+    </div>
+{{/if}}
+</div>
+
+<script>
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Products', 'Sales'],
+            ['Low End', {{lowEnd}}], ['Mid', {{mid}}], ['High End', {{highEnd}}], ['Luxury', {{luxury}} ]
+        ]);
+
+        var options = {
+            title: 'Performance',
+            legend: 'none',
+            pieSliceText: 'label',
+            slices: {  1: {offset: 0.2},
+                2: {offset: 0.3},
+                14: {offset: 0.4},
+                15: {offset: 0.5}
+            }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>

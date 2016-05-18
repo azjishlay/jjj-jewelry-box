@@ -8,8 +8,9 @@ var passport = require('passport');
 
 module.exports = function(app){
 	app.get('/', function(req, res){
-		var data = {stuff:{id:1,name:'test',points:200}};
+		// var data = {stuff:{id:1,name:'test',points:200}};
 		res.render('index',{
+			// isAuth returns true or false
 			isAuthenticated: req.isAuthenticated(),
 			user: req.user
 			});
@@ -61,14 +62,8 @@ module.exports = function(app){
 		res.render('create-employee');
 	});
 
-
-
-
 	app.post('/login', passport.authenticate('local'), function(req, res){
 		res.redirect('/');
 	});
-
-
-
-
+	
 };

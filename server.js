@@ -25,6 +25,9 @@ app.set('views', __dirname + '/app/views');
 var staticContentFolder = __dirname + '/app/public';
 app.use(express.static(staticContentFolder));
 
+// require passport.js
+require("./app/config/passport.js")(app)
+
 // require the api and html paths
 require("./app/routes/apiRoutes.js")(app)
 require("./app/routes/htmlRoutes.js")(app)
