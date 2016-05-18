@@ -6,6 +6,9 @@ html, body {
 body {
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 14px;
+	background: #e5e6e6;
+	background-size: 100% 100%;
+	color: #313534;
 }
 
 /*Main*/
