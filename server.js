@@ -42,6 +42,7 @@ app.get('/sitemap.xml', function(req, res) { // send XML map
 });
 
 // require the api and html paths
+require("./app/routes/jeremiahRoutes.js")(app)
 require("./app/routes/apiRoutes.js")(app)
 require("./app/routes/htmlRoutes.js")(app)
 
