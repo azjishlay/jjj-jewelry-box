@@ -1,7 +1,22 @@
 .page-header, .page-content {
   min-width: 600px;
   overflow: hidden;
+  padding: 0 15px;
   /*forbids squishing on resize*/
+}
+
+.page-header {
+  border: 0;
+  top: 0;
+  min-height: 80px;
+  position: relative;
+}
+
+.page-header .page-title {
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
 }
 
 p {
@@ -32,28 +47,6 @@ h4 {
   width: 100%;
 }
 
-.page-header {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  min-height: 80px;
-  top: 0px;
-  position: relative;
-}
-
-.page-header .page-title {
-  letter-spacing: 1px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 25px;
-}
-
-.subtext {
-  font-size: 14px;
-  color: #666;
-}
-
-
 /*Forms*/
 
 .inline-group .inline-label {
@@ -75,4 +68,150 @@ h4 {
 .numerical input {
   font-size: 2rem;
   text-align: right;
+}
+
+/*Search Results Nav*/
+
+.search-bar {
+  background-color: #333333;
+  border-color: #333333;
+  color: #888888;
+  padding: 12px 24px;
+}
+
+.search-bar > input {
+  font-size: 24px;
+}
+
+.search-bar > .input-field label.active {
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
+
+.search-bar > .input-field input[type=search]:focus {
+  background-color: inherit;
+  color: #FFFFFF;
+}
+
+.search-bar > .input-field input[type=search]:focus+label i,
+.search-bar > .input-field input[type=search]:focus ~ .mdi-navigation-close,
+.search-bar > .input-field input[type=search]:focus ~ .material-icons {
+  color: #938454;
+}
+
+.card-head.search-tabs {
+  float: left;
+  z-index: 99;
+}
+
+.search-tabs {
+  background-color: #f2f3f3;
+  border-color: #f2f3f3;
+  color: #333333;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.search-tabs ul {
+  margin: 0;
+  padding: 0;
+}
+
+.search-tabs > ul > li > a {
+  background-color: transparent;
+  border-right: 2px solid transparent;
+  color: #888888;
+
+  position: relative;
+  display: block;
+  padding: 10px 25px 10px 15px;
+  line-height: 54px;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.search-tabs > ul > li > a:hover,
+.search-tabs > ul > li > a:focus,
+.search-tabs > ul > li.active > a,
+.search-tabs > ul > li.active > a:hover,
+.search-tabs > ul > li.active > a:focus {
+  background-color: #f2f3f3;
+  border-right: 2px solid #938454;
+  color: #938454;
+}
+
+
+/*Search Results Cards*/
+
+.card-body.search-results {
+  margin-left: 140px;
+  margin-top: 1px;
+  margin-bottom: 24px;
+}
+
+.search-results {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #333333;
+  padding: 24px;
+  position: relative;
+}
+
+.search-results .card {
+  background: #F9F9F9;
+  border: 1px solid #eee;
+  min-height: 230px;
+  margin-bottom: 40px;
+}
+
+.search-results .card .card-image {
+  float: left;
+  position: relative;
+  width: 36%;
+  text-align: center;
+}
+
+.search-results .card .card-image img {
+  display: auto;
+  padding: 15px;
+  width: auto;
+  max-width: 230px;
+  height: auto;
+  max-height: 230px;
+}
+
+.search-results .card .card-content {
+  float: left;
+  position: relative;
+  width: 64%;
+}
+
+.search-results .card .card-content .card-title {
+  letter-spacing: 1;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #f9f9f9;
+  margin-bottom: 0;
+}
+
+.search-results .card .card-content .card-action {
+  padding: 0;
+}
+
+.col1 {
+  width: 60%;
+  float: left;
+  line-height: 1.5em;
+}
+
+.col2 {
+  width: 30%;
+  float: left;
+  margin-left: 10px;
 }
