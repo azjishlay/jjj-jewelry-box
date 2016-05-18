@@ -31,6 +31,8 @@ $(document).ready(function() {
             });
     });
 
+    var numOfProducts = 0;
+    
     $('#productAdd').click(function(){
         // grab the product ID from the data attribute
         $.get(currentUrl + "/api/products/"+currentSearch)
@@ -62,21 +64,26 @@ $(document).ready(function() {
                             '</div>';
                 $('#lineItemsList').append(html);
                 var html2 = '<div class="input-field col s2">'+
-                                    '<input disabled name="subtotal" value="$0.00" id="subtotal" type="text" class="validate">'+
-                                    '<label for="subtotal">Subtotal</label>'+
-                                '</div>'+
-                                '<div class="input-field col s2">'+
-                                    '<input disabled name="tax" value="$0.00" id="tax" type="text" class="validate">'+
-                                    '<label for="tax">Tax</label>'+
-                                '</div>'+
-                                '<div class="input-field col s2">'+
-                                    '<input disabled name="totalPrice" value="$0.00" id="totalPrice" type="text" class="validate">'+
-                                    '<label for="totalPrice">Total Price</label>'+
+                                '<input disabled name="subtotal" value="$0.00" id="subtotal" type="text" class="validate">'+
+                                '<label for="subtotal">Subtotal</label>'+
+                            '</div>'+
+                            '<div class="input-field col s2">'+
+                                '<input disabled name="tax" value="$0.00" id="tax" type="text" class="validate">'+
+                                '<label for="tax">Tax</label>'+
+                            '</div>'+
+                            '<div class="input-field col s2">'+
+                                '<input disabled name="totalPrice" value="$0.00" id="totalPrice" type="text" class="validate">'+
+                                '<label for="totalPrice">Total Price</label>'+
                             '</div>';
+                $('#bottomRow').prepend(html2);
+                
             });
 
     });
 
+    $( "#" ).change(function() {
+        alert( "Handler for .change() called." );
+    });
     // get request to pull 
     $.get(currentUrl + "/api/users")
         .done(function(data){
