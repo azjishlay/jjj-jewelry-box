@@ -16,36 +16,17 @@
 
                     <!-- FORM -->
                     <div class="row">
-                        <form class="col s12 form-add-new" action="/add-new" method="POST" role="form">
-                            <div class="row">
-                                <div class="col s6">
-                                    <p>Invoice #:</p>
-                                    <h4>45</h4>
-                                </div>
-                                <div class="col s6">
-                                    <p>Date:</p>
-                                    <h4>05-17-2016</h4>
-                                </div>
-                            </div>
-
+                        <form class="col s12 form-add-new" role="form">
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <select id="employee" name="employee">
-                                        <option value="" disabled selected>Select</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
+                                    <select id="employee" name="employee" class="browser-default">
+                                        <option value="0" disabled>Select Employee:</option>
                                     </select>
-                                    <label for="product_category_id">Employee:</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <select id="client" name="client">
-                                        <option value="" disabled selected>Select</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
+                                    <select id="client" name="client" class="browser-default">
+                                        <option value="0" disabled>Select Customer:</option>
                                     </select>
-                                    <label for="product_category_id">Customer:</label>
                                 </div>
                             </div>
 
@@ -54,33 +35,35 @@
                                     <input id="product_sku" name="product_sku" type="text" class="validate">
                                     <label for="product_sku">Product Search:</label>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="input-field col s5">
-                                    <input disabled name="name" value="Product Name Here" id="productName" type="text" class="validate">
-                                    <label for="name">Product:</label>
-                                </div>
-                                <div class="input-field col s2">
-                                    <input disabled name="price" value="$3000.00" id="productPrice" type="text" class="validate">
-                                    <label for="price">Price:</label>
-                                </div>
-                                <div class="input-field col s2">
-                                    <input name="qty" value="1" id="productQty" type="text" class="validate">
-                                    <label for="qty">QTY:</label>
-                                </div>
-                                <div class="input-field col s2">
-                                    <input name="discount" value="0" id="productDisc" type="text" class="validate">
-                                    <label for="discount">Discount</label>
-                                </div>
-                                <div class="col s1">
-                                    <i class="material-icons removeItem">highlight_off</i>
+                                <div class="input-field col s6">
+                                    <a class="waves-effect waves-light btn" id="productSearch">SEARCH</a>
+                                    <a class="waves-effect waves-light btn" id="productAdd">ADD</a>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="spacer-10"></div>
-                                <div class="input-field col s12 right-align">
+                            <div class="row" id="lineItemsList">
+                                <div class="input-field col s4">
+                                    <label for="name" class="lineItemHeader">Product</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <label for="price" class="lineItemHeader">Price</label>
+                                </div>
+                                <div class="input-field col s1">
+                                    <label for="qty" class="lineItemHeader">QTY</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <label for="discount" class="lineItemHeader">Discount</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <label for="total" class="lineItemHeader">Total</label>
+                                </div>
+                                <div class="input-field col s1">
+                                    <label for="discount" class="lineItemHeader">Remove</label>
+                                </div>
+                            </div>
+
+                            <div class="row" id="bottomRow">
+                                <div class="input-field col s6 right-align">
                                     <a class="btn">Reset</a>
                                     <a class="btn">Submit</a>
                                 </div>
