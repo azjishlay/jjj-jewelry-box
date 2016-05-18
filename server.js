@@ -25,6 +25,10 @@ app.set('views', __dirname + '/app/views');
 var staticContentFolder = __dirname + '/app/public';
 app.use(express.static(staticContentFolder));
 
+
+// require passport.js
+require("./app/config/passport.js")(app)
+
 // express sitemap app
 var sitemap = require('express-sitemap');
 var map = sitemap({
