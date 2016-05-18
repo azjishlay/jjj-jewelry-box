@@ -6,27 +6,36 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>JJJ - Jewelry Box - Run The Jewelry (Store)!</title>
+	<title>JJJ :: Jewelry Box</title>
 	
 	<!-- Favicon image -->
 	<link rel="shortcut icon" type="image/ico" href="favicon.ico" />
-	<!-- Standard reset.css from http://meyerweb.com/eric/tools/css/reset/ -->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<!-- Josefin Google Fonts -->
-	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,300,300italic,400italic,600,600italic,700,100italic|Josefin+Slab:400,400italic,600,600italic,700,300' rel='stylesheet' type='text/css'>
-	<!-- Materiallize - icons -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Materiallize - Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-	<!-- Our custom css file -->	
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-	<!-- Minified jquery -->
+	<!-- Google Fonts - Josefin -->
+	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,300,300italic,400italic,600,600italic,700,100italic|Josefin+Slab:400,400italic,600,600italic,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Google Fonts - Materialize - Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Materialize - Compiled and minified CSS -->
+	<link rel="stylesheet" href="assets/css/materialize.min.css">
+
+    <!-- OUR CUSTOM FILES -->
+    <link rel="stylesheet" type="text/css" href="assets/css/materialize.override.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.content.css">
+
+    <!--JS FILES GOES AFTER CSS-->
+
+	<!-- Jquery -->
 	<script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
-	<!-- Materiallize - Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-	<!-- link to firebase -->
+
+	<!-- Materialize - Compiled and minified JavaScript -->
+	<script src="assets/js/materialize.min.js"></script>
+
+	<!-- Firebase -->
 	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+
 	<!-- moment.js -->
 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
@@ -34,73 +43,96 @@
 
 </head>
 <body>
-	
-	<div class="row mainRow">
-		<div class="sidebar col s2">
-			<div class="sideContainer">
-				<a href="index.html" class="brand-logo"><img id="headerLogo" src="assets/images/theJewelryBox-Top.png" alt="the JJJ Jewelry box logo"></a>
-				<ul class="collapsible" data-collapsible="accordion">
-					<li><a href="/"><i class="material-icons">web</i>Dashboard</a></li>
-					<li>
-						<div class="collapsible-header"><i class="material-icons md-light">account_box</i>Clients</div>
-						<div class="collapsible-body">
-							<ul>
-								<li><a href="/search-clients">Client Search</a></li>
-								<li><a href="/my-clients">All My Clients</a></li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header"><i class="material-icons md-light">watch</i>Products</div>
-						<div class="collapsible-body">
-							<ul>
-								<li><a href="/search-products">Product Search</a></li>
-								<li><a href="/all-products">All Products</a></li>
-								<li><a href="/create-products">Create Product</a></li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header"><i class="material-icons md-light">description</i>Invoices</div>
-						<div class="collapsible-body">
-							<ul>
-								<li><a href="/my-clients">Create New Invoice</a></li>
-								<li><a href="/search-clients">Invoice Search</a></li>
-								<li><a href="/my-clients">All Invoices</a></li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header"><i class="material-icons md-light">build</i>Work Orders</div>
-						<div class="collapsible-body">
-							<ul>
-								<li><a href="/my-clients">Create New Work Order</a></li>
-								<li><a href="/search-clients">Work Order Search</a></li>
-								<li><a href="/my-clients">All Work Orders</a></li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header"><i class="material-icons md-light">face</i>Employees</div>
-						<div class="collapsible-body">
-							<ul>
-								<li><a href="/search-clients">Employee Search</a></li>
-								<li><a href="/my-clients">All Employees</a></li>
-								<li><a href="/my-clients">Create New Employee</a></li>
-							</ul>
-						</div>
-					</li>
-					<li><a href="/logout"><i class="material-icons">power_settings_new</i>Logout</a></li>
-				</ul>
-				<div class="footer center-align">
-					© 2016 - thejjjjewelrybox.com
-				</div>
-			</div>
-		</div>
-		<div class="mainContent col s10">
-			{{{body}}}	
-		</div>
-	</div>
+
+    <div class="main">
+        <div class="row">
+
+            <!--Sidebar-->
+            <div class="sidebar">
+
+                <!--Logo-->
+                <div class="logo center">
+                    <a href="/"><img class="logo-img" id="headerLogo" src="assets/images/theJewelryBox-Top.png" alt="JJJ Jewelry Box"></a>
+                </div>
+
+                <!--Nav-->
+                <div class="nav">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">
+                                <a href="/"><i class="material-icons">web</i>Dashboard</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons md-light">account_box</i>Clients</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="/clients">Search Clients</a></li>
+                                    <li><a href="/create-client">Add New Client</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons md-light">watch</i>Products</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="/products">Search Products</a></li>
+                                    <li><a href="/create-product">Add New Product</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons md-light">description</i>Invoices</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="/invoices">Search Invoices</a></li>
+                                    <li><a href="/create-invoice">Create New Invoice</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons md-light">build</i>Work Orders</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="/work-orders">Search Work Orders</a></li>
+                                    <li><a href="/create-work-order">Create New Work Order</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons md-light">face</i>Employees</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="/employees">Search Employees</a></li>
+                                    <li><a href="/create-employee">Add New Employee</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="collapsible-header">
+                                <a href="/logout"><i class="material-icons">power_settings_new</i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--Footer-->
+                <div class="footer center-align">
+                    <a href="#">© 2016 - JJJ Jewelry Box</a>
+                </div>
+
+            </div>
+
+            <!--Content-->
+            <div class="content">
+                {{{body}}}
+            </div>
+
+        </div>
+    </div>
 	
 	<!-- Modal1 -->
 	<div id="modal1" class="modal">
@@ -141,14 +173,9 @@
 			</button>
 		</div>
 	</div>
-	
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('.collapsible').collapsible({
-				accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-			});
-		});
-	</script>
+
+    <!--Helper functions to initialize Materialize CSS-->
+	<script type="text/javascript" src="assets/js/materialize.override.js"></script>
 
 </body>
 </html>
