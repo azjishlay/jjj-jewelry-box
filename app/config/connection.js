@@ -5,10 +5,10 @@ var Sequelize = require('sequelize');
 var source = {
             jaws: {
                 port: 3306,
-                host: ' ',
-                user: ' ',
-                password: ' ',
-                database: ' '
+                host: 'l9dwvv6j64hlhpul.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+                user: 'detags019k0t57fk',
+                password: 'hqztq93jda3jkjdw',
+                database: 'goyywiycjxk0og33'
             },
             jeremiah: {
                 port: 8889,
@@ -33,7 +33,7 @@ var source = {
             }
         };
 
-var db = source.jeremiah; 
+var db = source.jeremiah;
 
 // connect to the database and log the error or connect as ID
 var sequelize = new Sequelize(db.database, db.user, db.password, {

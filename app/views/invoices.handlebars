@@ -1,0 +1,68 @@
+<!--Page Header-->
+<div class="page-header">
+
+        <h4 class="page-title">All Invoices</h4>
+
+</div>
+
+<!--Add New Product-->
+
+<div class="page-content">
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Trans #</th>
+                <th>Employee</th>
+                <th>Customer</th>
+                <th>Subtotal</th>
+                <th>Tax</th>
+                <th>Total</th>
+                <th>Products</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#invoices}}
+                <tr>
+                    <th scope=row>{{id}}</th>
+                    <td>{{employee.name}}</td>
+                    <td>{{client.first_name}} {{client.last_name}}</td>
+                    <td>{{subtotal}}</td>
+                    <td>{{taxes}}</td>
+                    <td>{{total}}</td>
+                    <td><span class="view" id="{{id}}" style="cursor:pointer;">view</span></td>
+                    <td>{{date_created}}</td>
+                </tr>
+                <tr id="lineItems{{id}}" style="display:none">
+                    <td colspan="8" style="padding: 15px 50px">
+                        <table class="table table-bordered table-striped z-depth-2 productTable">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Discount</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#line_items}}
+                                <tr>
+                                    <td>{{product.name}}</td>
+                                    <td>{{unit_price}}</td>
+                                    <td>{{quantity}}</td>
+                                    <td>{{discount}}</td>
+                                    <td>{{total}}</td>
+                                </tr>
+                            {{/line_items}}
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            {{/invoices}}
+            </tbody>
+        </table>
+
+</div>
+

@@ -33,12 +33,12 @@ var invoices = sequelize.define("invoices", {
 		type: Sequelize.FLOAT
 	},
 	payment_type: {
-		type: Sequelize.FLOAT
+		type: Sequelize.STRING
 	}
 });
 
 // Syncs with DB
-invoices.sync({force: true}).then(function () {
+invoices.sync({}).then(function () {
   // Table created
   console.log('invoices table created')
 });

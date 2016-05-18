@@ -1,6 +1,74 @@
-<!--Products Search-->
+<!--Page Header-->
+<div class="page-header">
+    <h4 class="page-title">Search products</h4>
+</div>
 
-<!--Display all the products-->
-{{#each products}}
+<!--Search Products-->
+<div class="page-content">
+    <div class="card tabs-left">
 
-{{/each}}
+        <!-- BEGIN SEARCH BAR -->
+        <div class="card-body">
+            <form class="search-bar">
+                <div class="input-field">
+                    <input id="search" type="search" placeholder="Enter search term here " required>
+                    <label for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form><!--end .form-->
+        </div><!--end .card-body -->
+        <!-- END SEARCH BAR -->
+
+        <!-- BEGIN TAB RESULTS -->
+        <div class="card-head search-tabs">
+            <ul data-toggle="tabs">
+                <li class="active"><a href="#web1">Web</a></li>
+                <li><a href="#web1">Images</a></li>
+                <li><a href="#web1">Documents</a></li>
+                <li><a href="#web1">Videos</a></li>
+                <li><a href="#web1">Contacts</a></li>
+            </ul>
+        </div>
+
+        <!-- END TAB RESULTS -->
+
+        <!-- BEGIN TAB CONTENT -->
+        <div class="card-body search-results">
+            <div class="row">
+                <div class="col l12 m12 s12">
+
+                    <!-- BEGIN RESULT LIST -->
+
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="http://www.cartier.us/content/dam/rcq/car/63/68/24/636824.png.scale.314.high.png" alt="">
+                        </div>
+
+                        <div class="card-content">
+                            <h4 class="product-name card-title">Card Title</h4>
+
+                            <p class="col1 product-description truncate">The Maison's emblematic panther, first leaped into the world of Cartier jewelry in 1914. Louis Cartier was a pioneer in taming the legendary creature and his associate Jeanne Toussaint went on to make magnificent use of the icon. The panther has since inspired a timeless and elegant collection of jewelry and timepieces that show the multiple facets of the animal that can be at times bold, regal or sensual.</p>
+
+                            <p class="col2 product-price">$6,000</p>
+
+                            <div class="card-action">
+                                <div class="col1 product-materials">
+                                    Yellow gold, onyx, tsavorite garnet
+                                </div>
+                                <div class="col2 action-buttons">
+                                    <a href="#" class="btn btn-default btn-sm"><i class="material-icons">note_add</i></a>
+                                </div>
+                        </div>
+                        </div>
+
+
+                    </div><!-- END RESULTS LIST -->
+
+
+                    </div><!--end .col -->
+                </div><!--end .row -->
+        </div><!--end .card-body -->
+        <!-- END TAB CONTENT -->
+
+    </div>
+</div>
