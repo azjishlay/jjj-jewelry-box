@@ -19,6 +19,8 @@ module.exports = function(app){
     }
 
     app.get('/create-invoice', loggedIn, function(req, res, next){
+        console.log('userID:');
+        console.log(req.user.id);
         res.render('create-invoice',{
             // isAuth returns true or false
             isAuthenticated: req.isAuthenticated(),
