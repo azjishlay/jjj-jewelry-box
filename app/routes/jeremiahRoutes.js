@@ -10,7 +10,24 @@ var sequelize = require("../config/connection.js");
 
 module.exports = function(app){
 
-    app.get('/invoices', function(req, res){
+    function loggedIn(req, res, next) {
+        if (req.user) {
+            next();
+        } else {
+            res.redirect('/login');
+        }
+    }
+
+    app.get('/create-invoice', loggedIn, function(req, res, next){
+        res.render('create-invoice',{
+            // isAuth returns true or false
+            isAuthenticated: req.isAuthenticated(),
+            user: req.user
+        });
+    });
+
+
+    app.get('/invoices', loggedIn, function(req, res, next){
         invoices.findAll({
             include:[{
                 model: users
@@ -32,15 +49,7 @@ module.exports = function(app){
         });
     });
 
-    app.get('/create-invoice', function(req, res){
 
-        
-        res.render('create-invoice',{
-            // isAuth returns true or false
-            isAuthenticated: req.isAuthenticated(),
-            user: req.user
-        });
-    });
 
     app.get('/api/users',function (req,res){
         users.findAll({}).then(function(result){
@@ -101,5 +110,5 @@ module.exports = function(app){
     app.get('/create-work-order', function(req, res){
         res.render('create-work-order');
     });
-    
+
 };
