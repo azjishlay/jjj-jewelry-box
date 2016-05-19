@@ -30,7 +30,7 @@
 
         <div class="row">
             <div class="col-md-4">
-                <div id="piechart" style="width: 600px; height: 350px;"></div>
+                <div id="piechart" style="width: 300px; height: 250px;"></div>
             </div>
         </div>
     </div>
@@ -63,17 +63,14 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Products', 'Sales'],
-            ['Low End', {{lowEnd}}], ['Mid', {{mid}}], ['High End', {{highEnd}}], ['Luxury', {{luxury}} ]
+            ['Low End', {{user.lowEnd}}], ['Mid', {{user.mid}}], ['High End', {{user.highEnd}}], ['Luxury', {{user.luxury}} ]
         ]);
 
         var options = {
             title: 'Performance',
             legend: 'none',
             pieSliceText: 'label',
-            slices: {  1: {offset: 0.2},
-                2: {offset: 0.3},
-                14: {offset: 0.4},
-                15: {offset: 0.5}
+            slices: {  3: {offset: 0.2}
             }
         };
 
