@@ -16,7 +16,6 @@ $(document).ready(function() {
         var skuSearch = $( "#product_sku" ).val().trim();
         $.get(currentUrl + "/api/skuSearch/"+skuSearch)
             .done(function(data){
-                console.log(data);
                 if(data[1]){
                     $("#product_sku").val('More than one match. Be more specific.');
                 } else {
@@ -30,71 +29,84 @@ $(document).ready(function() {
                 }
             });
     });
-
-    var numOfProducts = 0;
     
     $('#productAdd').click(function(){
         // grab the product ID from the data attribute
         $.get(currentUrl + "/api/products/"+currentSearch)
             .done(function(data){
-                //console.log(data);
                 prodID = data[0].id;
                 var prodName = data[0].name;
                 var prodPrice = data[0].price;
-                console.log(prodID+' - '+prodName+' - '+prodPrice);
+                prodPrice = prodPrice.toFixed(2);
                 var html =  '<div class="row" id="'+prodID+'">'+
                                 '<div class="input-field col s4">'+
-                                    '<input disabled name="name" value="'+prodName+'" class="productName" type="text" class="validate">'+
+                                    '<input disabled name="name" value="'+prodName+'" id="productName" type="text" class="validate">'+
                                 '</div>'+
                                 '<div class="input-field col s2">'+
-                                    '<input disabled name="price" value="'+prodPrice+'" class="productPrice" type="text" class="validate">'+
+                                    '<input disabled name="price" value="'+prodPrice+'" id="productPrice" type="text" class="validate">'+
                                 '</div>'+
                                 '<div class="input-field col s1">'+
-                                    '<input name="qty" value="1" class="productQty" type="text" class="validate">'+
+                                    '<input name="qty" value="1" id="productQty" type="text" class="validate" onblur="lineItemChange()" >'+
                                 '</div>'+
                                 '<div class="input-field col s2">'+
-                                    '<input name="discount" value="$0.00" class="productDisc" type="text" class="validate">'+
+                                    '<input name="discount" value="0" id="productDisc" type="text" class="validate" onblur="lineItemChange()">'+
                                 '</div>'+
                                 '<div class="input-field col s2">'+
-                                    '<input disabled name="total" value="'+prodPrice+'" class="productTotal" type="text" class="validate">'+
+                                    '<input disabled name="total" value="'+prodPrice+'" id="productTotal" type="text" class="validate">'+
                                 '</div>'+
                                 '<div class="col s1">'+
                                     '<i class="material-icons removeItem">highlight_off</i>'+
                                 '</div>'+
                             '</div>';
                 $('#lineItemsList').append(html);
-                var html2 = '<div class="input-field col s2">'+
-                                '<input disabled name="subtotal" value="$0.00" id="subtotal" type="text" class="validate">'+
-                                '<label for="subtotal">Subtotal</label>'+
-                            '</div>'+
-                            '<div class="input-field col s2">'+
-                                '<input disabled name="tax" value="$0.00" id="tax" type="text" class="validate">'+
-                                '<label for="tax">Tax</label>'+
-                            '</div>'+
-                            '<div class="input-field col s2">'+
-                                '<input disabled name="totalPrice" value="$0.00" id="totalPrice" type="text" class="validate">'+
-                                '<label for="totalPrice">Total Price</label>'+
-                            '</div>';
-                $('#bottomRow').prepend(html2);
+                var html2 = '<input disabled name="subtotal" value="$0.00" id="subtotal" type="text" class="validate">';
+                var html3 = '<input disabled name="tax" value="$0.00" id="tax" type="text" class="validate">'
+                var html4 = '<input disabled name="totalPrice" value="$0.00" id="totalPrice" type="text" class="validate">'
+                $('#bottomSubtotalHeader').prepend(html2);
+                $('#bottomTaxHeader').prepend(html3);
+                $('#bottomTotalHeader').prepend(html4);
+                $('#subtotal').val(prodPrice);
+                var taxes = prodPrice * 0.07;
+                taxes = taxes.toFixed(2);
+                $('#tax').val(taxes);
+                var total = prodPrice * 1.07;
+                total = total.toFixed(2);
+                $('#totalPrice').val(total);
+                $('#productAdd').hide();
+                $('#productSearch').hide();
+                $('#product_sku_div').hide();
                 
             });
 
     });
 
-    $( "#" ).change(function() {
-        alert( "Handler for .change() called." );
+    $('#invoiceReset').click(function(){
+        location.reload();
     });
-    // get request to pull 
-    $.get(currentUrl + "/api/users")
-        .done(function(data){
-            for (var i = 0; i < data.length; i++) {
-                //console.log(data[i].name);
-                var userName = data[i].name;
-                var userID = data[i].id
-                var option = '<option value="'+userID+'">'+userName+'</option>';
-                $('#employee').append(option);
-            };
-        });
+
+    $('#invoiceSubmit').click(function(){
+        var currentURL = window.location.origin;
+        var userID = $('#userHeader').attr('data-userID');
+        var newInvoice =
+        {
+            'userID': userID,
+            'clientID': $("#client").val(),
+            'productID': currentSearch,
+            'productPrice': $("#productPrice").val(),
+            'productQty': $("#productQty").val(),
+            'productDisc': $("#productDisc").val(),
+            'invoiceSub':$('#subtotal').val(),
+            'invoiceTax':$('#tax').val(),
+            'invoiceTot':$('#totalPrice').val()
+        };
+        console.log(newInvoice);
+        $.post( currentURL + "/api/new/invoice", newInvoice)
+            .done(function(data){
+                console.log(data);
+            })
+        //window.location.href = '/invoices';
+        return false;
+    });
 
     $.get(currentUrl + "/api/clients")
         .done(function(data){

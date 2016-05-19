@@ -5,8 +5,8 @@
 
 </div>
 
-<!--Add New Product-->
 
+{{#if  isAuthenticated}}
 <div class="page-content">
 
         <div class="row">
@@ -19,10 +19,10 @@
                         <form class="col s12 form-add-new" role="form">
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <select id="employee" name="employee" class="browser-default">
-                                        <option value="0" disabled>Select Employee:</option>
-                                    </select>
+                                   <p>EMPLOYEE:</p>
+                                    <h4 id="userHeader" data-userID="{{user.id}}">{{user.name}}</h4>
                                 </div>
+
                                 <div class="input-field col s6">
                                     <select id="client" name="client" class="browser-default">
                                         <option value="0" disabled>Select Customer:</option>
@@ -31,11 +31,11 @@
                             </div>
 
                             <div class="row">
-                                <div class="input-field col s6">
+                                <div class="input-field col s6" id="product_sku_div">
                                     <input id="product_sku" name="product_sku" type="text" class="validate">
                                     <label for="product_sku">Product Search:</label>
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col s6 ">
                                     <a class="waves-effect waves-light btn" id="productSearch">SEARCH</a>
                                     <a class="waves-effect waves-light btn" id="productAdd">ADD</a>
                                 </div>
@@ -63,9 +63,18 @@
                             </div>
 
                             <div class="row" id="bottomRow">
+                                <div class="input-field col s2" id="bottomSubtotalHeader">
+                                    <label for="discount" class="lineItemHeader">Discount</label>
+                                </div>
+                                <div class="input-field col s2" id="bottomTaxHeader">
+                                    <label for="total" class="lineItemHeader">Tax</label>
+                                </div>
+                                <div class="input-field col s2" id="bottomTotalHeader">
+                                    <label for="total" class="lineItemHeader">Total</label>
+                                </div>
                                 <div class="input-field col s6 right-align">
-                                    <a class="btn">Reset</a>
-                                    <a class="btn">Submit</a>
+                                    <a class="btn" id="invoiceReset">Reset</a>
+                                    <a class="btn" id="invoiceSubmit">Submit</a>
                                 </div>
                             </div>
 
@@ -76,3 +85,15 @@
         </div>
 
 </div>
+
+{{else}}
+
+    <!--page content-->
+
+    <div class="page-content">
+        <div class="container">
+            <p>Description of the site.</p>
+            <span><a href="/login">Log In Here</a></span>
+        </div>
+    </div>
+{{/if}}

@@ -5,6 +5,8 @@ var products = require('../models/products.js');
 var product_categories = require('../models/product_categories.js');
 var clients = require('../models/clients');
 var passport = require('passport');
+var Sequelize = require("sequelize");
+var sequelize = require("../config/connection.js");
 
 module.exports = function(app){
 
@@ -19,15 +21,25 @@ module.exports = function(app){
                 include:[products]
             }]
         }).then(function(result){
-            var data = {'invoices':result};
+            //var data = {'invoices':result};
             //res.json(data);
-            res.render('invoices', data);
+            //res.render('invoices', data);
+            res.render('invoices',{'invoices':result,
+                // isAuth returns true or false
+                isAuthenticated: req.isAuthenticated(),
+                user: req.user
+            });
         });
     });
 
     app.get('/create-invoice', function(req, res){
+
         
-        res.render('create-invoice');
+        res.render('create-invoice',{
+            // isAuth returns true or false
+            isAuthenticated: req.isAuthenticated(),
+            user: req.user
+        });
     });
 
     app.get('/api/users',function (req,res){
@@ -65,6 +77,21 @@ module.exports = function(app){
             .then(function(result){
             res.json(result);
         });
+    });
+
+    app.post('/api/new/invoice', function(req, res){
+        var newinvoice = req.body;
+        invoices.create({
+            employee_id: newinvoice.userID,
+            customer_id: newinvoice.clientID,
+            date_created: sequelize.fn('NOW'),
+            subtotal: newinvoice.invoiceSub,
+            taxes: newinvoice.invoiceTax,
+            total: newinvoice.invoiceTot,
+            payment_amount: newinvoice.invoiceTot,
+            payment_type: 'credit card'
+        })
+            .then(console.log(res))
     });
 
     app.get('/work-orders', function(req, res){

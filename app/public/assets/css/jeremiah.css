@@ -18,3 +18,11 @@ td, th {
 .lineItemHeader{
     transform: translateY(-140%);
 }
+
+#client {
+    margin-top:40px;
+}
+
+#lineItemsList, #bottomRow {
+    margin-top: 80px;
+}

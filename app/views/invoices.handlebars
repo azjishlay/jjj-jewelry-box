@@ -5,8 +5,7 @@
 
 </div>
 
-<!--Add New Product-->
-
+{{#if  isAuthenticated}}
 <div class="page-content">
 
         <table class="table table-bordered table-striped">
@@ -66,3 +65,15 @@
 
 </div>
 
+
+{{else}}
+
+    <!--page content-->
+
+    <div class="page-content">
+        <div class="container">
+            <p>Description of the site.</p>
+            <span><a href="/login">Log In Here</a></span>
+        </div>
+    </div>
+{{/if}}
