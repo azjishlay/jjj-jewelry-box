@@ -5,7 +5,19 @@ $(document).ready(function() {
         var showID = 'lineItems'+ clickedID;
         $('#'+showID).toggle('fast');
     });
-    
+
+    $('.viewCustDetails').click(function(){
+        var clickedID = this.id;
+        var showID = 'custDetails'+ clickedID;
+        $('#'+showID).toggle('fast');
+    });
+
+    $('.viewProdDetails').click(function(){
+        var clickedID = this.id;
+        var showID = 'prodDetails'+ clickedID;
+        $('#'+showID).toggle('fast');
+    });
+
     // get current URL
     var currentUrl = window.location.origin;
     var currentSearch = '';
@@ -103,7 +115,7 @@ $(document).ready(function() {
         $.post( currentURL + "/api/new/invoice", newInvoice)
             .done(function(data){
                 console.log(data);
-            })
+            });
         //window.location.href = '/invoices';
         return false;
     });
@@ -117,7 +129,29 @@ $(document).ready(function() {
                 var clientID = data[i].id;
                 var option = '<option value="'+clientID+'">'+clientFirstName+' '+clientLastName+'</option>';
                 $('#client').append(option);
-            };
+            }
+        });
+    
+    $.get(currentUrl + "/api/categories")
+        .done(function(data){
+            for (var i = 0; i < data.length; i++) {
+                console.log(data[i].name+' - '+data[i].id);
+                var category = data[i].name;
+                var categoryID = data[i].id;
+                var option = '<option value="'+categoryID+'">'+category+'</option>';
+                $("#product_category_id").append(option);
+            }
         });
 
+    $.get(currentUrl + "/api/products")
+        .done(function(data){
+            for (var i = 0; i < data.length; i++) {
+                console.log(data[i].name+' - '+data[i].id);
+                var productName = data[i].name;
+                var productID = data[i].id;
+                var option = '<option value="'+productID+'">'+productName+'</option>';
+                $("#product_category_id").append(option);
+            }
+        });
+    
 });

@@ -8,6 +8,7 @@ var passport = require('passport');
 var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
+
 module.exports = function(app){
 
     function loggedIn(req, res, next) {
@@ -42,7 +43,6 @@ module.exports = function(app){
         }).then(function(result){
             //var data = {'invoices':result};
             //res.json(data);
-            //res.render('invoices', data);
             res.render('invoices',{'invoices':result,
                 // isAuth returns true or false
                 isAuthenticated: req.isAuthenticated(),
@@ -51,7 +51,46 @@ module.exports = function(app){
         });
     });
 
+    app.get('/create-client', function(req, res){
+        res.render('create-client');
+    });
 
+    app.get('/clients', function(req, res){
+        clients.belongsTo(clients,{foreignKey:'family_members'});
+        clients.findAll({
+            include:[{
+                model: clients
+            },{
+                model: users
+            }]
+        }).then(function(result){
+            // res.json(result);
+            res.render('clients',{'clients':result,
+                // isAuth returns true or false
+                isAuthenticated: req.isAuthenticated(),
+                user: req.user
+            });
+        });
+    });
+
+    app.get('/create-product', function(req, res){
+        res.render('create-product');
+    });
+
+    app.get('/products', function(req, res){
+        products.findAll({
+            include:[{
+                model: product_categories
+            }]
+        }).then(function(result){
+            // res.json(result);
+            res.render('products2',{'products':result,
+                // isAuth returns true or false
+                isAuthenticated: req.isAuthenticated(),
+                user: req.user
+            });
+        });
+    });
 
     app.get('/api/users',function (req,res){
         users.findAll({}).then(function(result){
@@ -67,6 +106,12 @@ module.exports = function(app){
 
     app.get('/api/products',function (req,res){
         products.findAll({}).then(function(result){
+            res.json(result);
+        });
+    });
+
+    app.get('/api/categories',function (req,res){
+        product_categories.findAll({}).then(function(result){
             res.json(result);
         });
     });
@@ -102,7 +147,18 @@ module.exports = function(app){
             payment_amount: newinvoice.invoiceTot,
             payment_type: 'credit card'
         })
-            .then(console.log(res))
+            .then(
+                line_items.create({
+                    product_id: newinvoice.productID,
+                    date_created: sequelize.fn('NOW'),
+                    unit_price: newinvoice.productPrice,
+                    quantity: newinvoice.productQty,
+                    total: newinvoice.productID,
+                    discount: "0"
+                }).then (
+                    res.json()
+                )
+            )
     });
 
     app.get('/work-orders', function(req, res){

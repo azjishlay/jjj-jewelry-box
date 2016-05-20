@@ -25,6 +25,8 @@
     "express-session": "^1.13.0",
     "express-sitemap": "^1.6.3",
     "formatter.js": "^0.1.5",
+    "handlebars": "^4.0.5",
+    "handlebars-intl": "^1.1.2",
     "mysql": "^2.10.2",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
