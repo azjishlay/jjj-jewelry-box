@@ -87,7 +87,9 @@ invoices.findAll({ attributes: [[sequelize.fn('COUNT', sequelize.col('subtotal')
 					}
 				}
 
-			done(null, {id: result[0].id, name: result[0].name, sales: result[0].sales, sales_goal: result[0].sales_goals, photo: result[0].photo, performance: (result[0].sales / result[0].sales_goals) * 100, lowEnd: lowEnd, mid: mid, highEnd: highEnd, luxury: luxury });
+				var performance = Math.round((result[0].sales / result[0].sales_goals) * 100);
+
+			done(null, {id: result[0].id, name: result[0].name, sales: result[0].sales, sales_goal: result[0].sales_goals, photo: result[0].photo, performance: performance, lowEnd: lowEnd, mid: mid, highEnd: highEnd, luxury: luxury });
 });
 		})
 	})
