@@ -1,0 +1,192 @@
+<div class="page-header">
+    <div class="row valign-wrapper">
+        <div class="col l10 m8 left-align">
+            <h4 class="page-title">Hello {{user.name}}!</h4>
+        </div>
+        <div class="col l2 m4 right-align">
+            <img src="{{user.photo}}" class="employee-photo responsive-img circle" alt="{{user.name}}">
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+
+    <div class="row top-part">
+
+        <!-- BEGIN -->
+        <div class="col l3 m6 s12">
+            <div class="card">
+                <div class="card-content">
+                    <small>Total Sales</small>
+                    <h2 class="big">${{user.sales}}</h2>
+                </div><!--end .card-body -->
+            </div><!--end .card -->
+        </div><!--end .col -->
+        <!-- END -->
+
+        <!-- BEGIN -->
+        <div class="col l3 m6 s12">
+            <div class="card">
+                <div class="card-content">
+                    <small>Sales Performance</small>
+                    <h2 class="big">{{user.performance}}%</h2>
+                </div><!--end .card-body -->
+            </div><!--end .card -->
+        </div><!--end .col -->
+        <!-- END -->
+
+        <!-- BEGIN -->
+        <div class="col l3 m6 s12">
+            <div class="card">
+                <div class="card-content">
+                    <small>Customer Satisfaction</small>
+                    <h2 class="big">95%</h2>
+                </div><!--end .card-body -->
+            </div><!--end .card -->
+        </div><!--end .col -->
+        <!-- END -->
+
+        <!-- BEGIN -->
+        <div class="col l3 m6 s12">
+            <div class="card">
+                <div class="card-content">
+                    <small>Pending Work Orders</small>
+                    <h2 class="big">25</h2>
+                </div><!--end .card-body -->
+            </div><!--end .card -->
+        </div><!--end .col -->
+        <!-- END -->
+
+
+    </div><!--end .row -->
+
+    <div class="row bot-part">
+
+        <!-- BEGIN CHART -->
+        <div class="col l9 m12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">My Invoices</div>
+
+                    <div id="piechart" style="width: 600px; height: 350px;"></div>
+
+                </div>
+            </div><!--end .card -->
+        </div><!--end .col -->
+        <!-- END CHART -->
+
+        <!-- BEGIN TASKS -->
+        <div class="col l3 m12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">My Tasks</div>
+
+                    <ul class="list">
+                        <li class="tile">
+                            <input type="checkbox" id="test1" />
+                            <label for="test1">Submit status report</label>
+                        </li>
+                        <li class="tile">
+                            <input type="checkbox" id="test2" />
+                            <label for="test2">Schedule dept meeting</label>
+                        </li>
+                        <li class="tile">
+                            <input type="checkbox" id="test3" />
+                            <label for="test3">Afternoon tea with Julie</label>
+                        </li>
+                        <li class="tile">
+                            <input type="checkbox" id="test4" checked />
+                            <label for="test4">Revise store inventory</label>
+                        </li>
+                        <li class="tile">
+                            <input type="checkbox" id="test5" checked/>
+                            <label for="test5">Pizza party</label>
+                        </li>
+                    </ul>
+                    <form action="#">
+
+                    </form>
+                </div>
+            </div><!--end .card -->
+        </div><!--end .col -->
+        <!-- END TASKS -->
+    </div><!--end .row -->
+
+    <div class="row client-list">
+
+        <!-- BEGIN CLIENTS -->
+        <div class="col l12 m12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">My Clients</div>
+                    <ul class="list">
+
+                        {{#myClients}}
+                            <li class="tile">
+                                <div class="row tile-content">
+                                    <div class="tile-icon">
+                                        <img src="{{photo_url}}" alt="{{nickname}}">
+                                    </div>
+                                    <div class="tile-text">
+                                        <a href=""><span class="tile-title">{{salutation}}</span>   {{first_name}} {{last_name}}</a>
+                                        <div class="tile-buttons">
+                                        <a href="#" class="btn"><i class="material-icons">phone</i></a>
+                                        <a href="#" class="btn"><i class="material-icons">email</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row tile-content">
+                                    <div class="col l6 m12 s12">
+                                        <div class="tile-title">Favorites</div>
+                                        <div class="row">
+                                            <a href="#" class="tile-icon"><img src="assets/images/ring_cartier.png" class="products" alt="SKU: 10001"></a>
+                                            <a href="#" class="tile-icon"><img src="assets/images/ring_chanel.png" class="products" alt="SKU: 10001"></a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col l6 m12 s12">
+                                        <div class="tile-title">Recommendations</div>
+                                        <div class="row products">
+                                            <a href="#" class="tile-icon"><img src="assets/images/ring_cartier.png" class="products" alt="SKU: 10001"></a>
+                                            <a href="#" class="tile-icon"><img src="assets/images/ring_chanel.png" class="products" alt="SKU: 10001"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {{/myClients}}
+
+                    </ul>
+                </div>
+            </div><!--end .card -->
+        </div><!--end .col -->
+        <!-- END CLIENTS -->
+
+    </div>
+</div>
+
+<script>
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Products', 'Sales'],
+            ['Low End', {{lowEnd}}], ['Mid', {{mid}}], ['High End', {{highEnd}}], ['Luxury', {{luxury}} ]
+        ]);
+
+        var options = {
+            title: 'Performance',
+            legend: 'none',
+            pieSliceText: 'label',
+            slices: {  1: {offset: 0.2},
+                2: {offset: 0.3},
+                14: {offset: 0.4},
+                15: {offset: 0.5}
+            }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>
