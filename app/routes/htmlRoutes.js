@@ -7,13 +7,21 @@ var passport = require('passport');
 
 
 module.exports = function(app){
-	app.get('/', function(req, res){
-		// var data = {stuff:{id:1,name:'test',points:200}};
-		res.render('index',{
-			// isAuth returns true or false
-			isAuthenticated: req.isAuthenticated(),
-			user: req.user
+	
+	app.get('/', loggedIn, function(req, res) {
+
+		clients.findAll({
+			where: {
+				employee_id: req.user.id
+			}
+		}).then(function(data){
+			res.render('dashboard',{
+				isAuthenticated: req.isAuthenticated(),
+				user: req.user,
+				myClients: data
 			});
+		});
+
 	});
 
 	app.get('/login', function(req, res){
