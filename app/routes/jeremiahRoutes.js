@@ -5,10 +5,32 @@ var products = require('../models/products.js');
 var product_categories = require('../models/product_categories.js');
 var clients = require('../models/clients');
 var passport = require('passport');
+var Sequelize = require("sequelize");
+var sequelize = require("../config/connection.js");
+
 
 module.exports = function(app){
 
-    app.get('/invoices', function(req, res){
+    function loggedIn(req, res, next) {
+        if (req.user) {
+            next();
+        } else {
+            res.redirect('/login');
+        }
+    }
+
+    app.get('/create-invoice', loggedIn, function(req, res, next){
+        console.log('userID:');
+        console.log(req.user.id);
+        res.render('create-invoice',{
+            // isAuth returns true or false
+            isAuthenticated: req.isAuthenticated(),
+            user: req.user
+        });
+    });
+
+
+    app.get('/invoices', loggedIn, function(req, res, next){
         invoices.findAll({
             include:[{
                 model: users
@@ -19,15 +41,55 @@ module.exports = function(app){
                 include:[products]
             }]
         }).then(function(result){
-            var data = {'invoices':result};
+            //var data = {'invoices':result};
             //res.json(data);
-            res.render('invoices', data);
+            res.render('invoices',{'invoices':result,
+                // isAuth returns true or false
+                isAuthenticated: req.isAuthenticated(),
+                user: req.user
+            });
         });
     });
 
-    app.get('/create-invoice', function(req, res){
-        
-        res.render('create-invoice');
+    app.get('/create-client', function(req, res){
+        res.render('create-client');
+    });
+
+    app.get('/clients', function(req, res){
+        clients.belongsTo(clients,{foreignKey:'family_members'});
+        clients.findAll({
+            include:[{
+                model: clients
+            },{
+                model: users
+            }]
+        }).then(function(result){
+            // res.json(result);
+            res.render('clients',{'clients':result,
+                // isAuth returns true or false
+                isAuthenticated: req.isAuthenticated(),
+                user: req.user
+            });
+        });
+    });
+
+    app.get('/create-product', function(req, res){
+        res.render('create-product');
+    });
+
+    app.get('/products', function(req, res){
+        products.findAll({
+            include:[{
+                model: product_categories
+            }]
+        }).then(function(result){
+            // res.json(result);
+            res.render('products2',{'products':result,
+                // isAuth returns true or false
+                isAuthenticated: req.isAuthenticated(),
+                user: req.user
+            });
+        });
     });
 
     app.get('/api/users',function (req,res){
@@ -44,6 +106,12 @@ module.exports = function(app){
 
     app.get('/api/products',function (req,res){
         products.findAll({}).then(function(result){
+            res.json(result);
+        });
+    });
+
+    app.get('/api/categories',function (req,res){
+        product_categories.findAll({}).then(function(result){
             res.json(result);
         });
     });
@@ -67,6 +135,32 @@ module.exports = function(app){
         });
     });
 
+    app.post('/api/new/invoice', function(req, res){
+        var newinvoice = req.body;
+        invoices.create({
+            employee_id: newinvoice.userID,
+            customer_id: newinvoice.clientID,
+            date_created: sequelize.fn('NOW'),
+            subtotal: newinvoice.invoiceSub,
+            taxes: newinvoice.invoiceTax,
+            total: newinvoice.invoiceTot,
+            payment_amount: newinvoice.invoiceTot,
+            payment_type: 'credit card'
+        })
+            .then(
+                line_items.create({
+                    product_id: newinvoice.productID,
+                    date_created: sequelize.fn('NOW'),
+                    unit_price: newinvoice.productPrice,
+                    quantity: newinvoice.productQty,
+                    total: newinvoice.productID,
+                    discount: "0"
+                }).then (
+                    res.json()
+                )
+            )
+    });
+
     app.get('/work-orders', function(req, res){
         res.render('work-orders');
     });
@@ -74,5 +168,5 @@ module.exports = function(app){
     app.get('/create-work-order', function(req, res){
         res.render('create-work-order');
     });
-    
+
 };

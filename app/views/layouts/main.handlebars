@@ -92,25 +92,6 @@
                                 </ul>
                             </div>
                         </li>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons md-light">build</i>Work Orders</div>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="/work-orders">Search Work Orders</a></li>
-                                    <li><a href="/create-work-order">Create New Work Order</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons md-light">face</i>Employees</div>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="/employees">Search Employees</a></li>
-                                    <li><a href="/create-employee">Add New Employee</a></li>
-                                </ul>
-                            </div>
-                        </li>
 
                         <li>
                             <div class="collapsible-header">
@@ -178,5 +159,23 @@
     <!--Helper functions to initialize Materialize CSS-->
 	<script type="text/javascript" src="assets/js/materialize.override.js"></script>
     <script type="text/javascript" src="assets/js/jeremiah.js"></script>
+    <script type="text/javascript">
+        var lineItemChange = function() {
+            console.log('qty changed!');
+            var qtyChange = $( "#productQty" ).val().trim();
+            var prodLinePrice = $('#productPrice').val().trim();
+            var prodLineDiscount = $('#productDisc').val().trim();
+            var prodLineTotal = (qtyChange * prodLinePrice)-prodLineDiscount;
+            prodLineTotal = prodLineTotal.toFixed(2);
+            $('#productTotal').val(prodLineTotal);
+            $('#subtotal').val(prodLineTotal);
+            var taxes = prodLineTotal * 0.07;
+            taxes = taxes.toFixed(2);
+            $('#tax').val(taxes);
+            var total = prodLineTotal * 1.07;
+            total = total.toFixed(2);
+            $('#totalPrice').val(total);
+        };
+    </script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+<!--Page Header-->
+<div class="page-header">
+    <h4 class="page-title">All Clients</h4>
+</div>
+
+<div class="page-content">
+    <div class="row">
+        <div class="col s12 m12 s12">
+
+            <div class="card-panel">
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Designer</th>
+            <th>SKU</th>
+            <th>Price</th>
+            <th>QTY</th>
+            <th>Size</th>
+            <th>Details</th>
+            <th>Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#products}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{designer}}</td>
+                <td>{{sku}}</td>
+                <td>{{price}}</td>
+                <td>{{quantity}}</td>
+                <td>{{size}}</td>
+                <td><span class="viewProdDetails" id="{{id}}" style="cursor:pointer;">view</span></td>
+                <td>{{category.name}}</td>
+            </tr>
+            <tr id="prodDetails{{id}}" style="display:none">
+                <td colspan="8" style="padding: 15px 50px">
+                    <table class="table table-bordered table-striped z-depth-2 productTable">
+                        <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Materials</th>
+                            <th>Serial #</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+                            <td>{{description}}</td>
+                            <td>{{materials}}</td>
+                            <td>{{serial_number}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        {{/products}}
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

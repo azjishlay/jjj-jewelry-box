@@ -1,0 +1,66 @@
+<!--Page Header-->
+<div class="page-header">
+    <h4 class="page-title">All Clients</h4>
+</div>
+
+<div class="page-content">
+    <div class="row">
+        <div class="col s12 m12 s12">
+
+            <div class="card-panel">
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Birthday</th>
+            <th>Preferences</th>
+            <th>Favorites</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#clients}}
+            <tr>
+                <td>{{salutation}} {{first_name}} {{last_name}}</td>
+                <td>{{gender}}</td>
+                <td>{{birthday}}</td>
+                <td>{{preferences}}</td>
+                <td>{{favorites}}</td>
+                <td><span class="viewCustDetails" id="{{id}}" style="cursor:pointer;">view</span></td>
+            </tr>
+            <tr id="custDetails{{id}}" style="display:none">
+                <td colspan="8" style="padding: 15px 50px">
+                    <table class="table table-bordered table-striped z-depth-2 productTable">
+                        <thead>
+                        <tr>
+                            <th>Nick Name</th>
+                            <th>Birthstone</th>
+                            <th>Family Members</th>
+                            <th>Anniversary</th>
+                            <th>Employee</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>{{nickname}}</td>
+                                <td>{{birthstone}}</td>
+                                <td>{{client.salutation}} {{client.first_name}} {{client.last_name}}</td>
+                                <td>{{anniversary}}</td>
+                                <td>{{employee.name}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        {{/clients}}
+        </tbody>
+    </table>
+                </div>
+            </div>
+        </div>
+</div>
+
