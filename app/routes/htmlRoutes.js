@@ -24,8 +24,13 @@ module.exports = function(app){
 		clients.findAll({
 			where: {
 				employee_id: req.user.id
-			}
+			},
+			include: [{
+				model: invoices,
+				order: 'date_created DESC'
+			}]
 		}).then(function(data){
+			// res.json(data);
 			res.render('dashboard',{
 				isAuthenticated: req.isAuthenticated(),
 				user: req.user,

@@ -1,6 +1,15 @@
+.page-header .welcome {
+    color: #888888;
+}
+
+.page-header .special {
+    color: #333333;
+}
+
 .page-header .employee-photo {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 64px;
+    max-height: 64px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
 }
 
 a {
@@ -71,6 +80,7 @@ a {
     width: 64px;
     height: 64px;
     border-radius: 64px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.17);
 }
 
 .list .tile .tile-content .tile-text {
