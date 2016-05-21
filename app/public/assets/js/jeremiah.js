@@ -115,8 +115,8 @@ $(document).ready(function() {
         $.post( currentURL + "/api/new/invoice", newInvoice)
             .done(function(response){
                 console.log(response);
+                window.location.href = '/invoices';
             });
-        window.location.href = '/invoices';
         return false;
     });
 
