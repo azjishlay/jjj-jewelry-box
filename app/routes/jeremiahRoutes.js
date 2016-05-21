@@ -39,7 +39,8 @@ module.exports = function(app){
             },{
                 model: line_items,
                 include:[products]
-            }]
+            }],
+            order: 'id DESC'
         }).then(function(result){
             //var data = {'invoices':result};
             //res.json(data);
@@ -59,7 +60,7 @@ module.exports = function(app){
         res.render('create-product');
     });
 
-    app.get('/products', function(req, res){
+    app.get('/products', loggedIn, function(req, res, next){
         products.findAll({
             include:[{
                 model: product_categories
@@ -107,7 +108,7 @@ module.exports = function(app){
         });
     });
 
-    app.get('/clients', function(req, res){
+    app.get('/clients', loggedIn, function(req, res, next){
         clients.belongsTo(clients,{foreignKey:'family_members'});
         clients.findAll({
             include:[{
