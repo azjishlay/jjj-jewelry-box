@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-content">
                     <small class="tile-title">Total Sales</small>
-                    <h2 class="big">${{user.sales}}</h2>
+                    <h2 class="big truncate" id="userSales">{{user.sales}}</h2>
                 </div><!--end .card-body -->
             </div><!--end .card -->
         </div><!--end .col -->
@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-content">
                     <small class="tile-title">Sales Performance</small>
-                    <h2 class="big">{{user.performance}}%</h2>
+                    <h2 class="big truncate" id="userPerformance">{{user.performance}}</h2>
                 </div><!--end .card-body -->
             </div><!--end .card -->
         </div><!--end .col -->
@@ -42,7 +42,7 @@
             <div class="card">
                 <div class="card-content">
                     <small class="tile-title">Pending Work Orders</small>
-                    <h2 class="big">25</h2>
+                    <h2 class="big truncate">25</h2>
                 </div><!--end .card-body -->
             </div><!--end .card -->
         </div><!--end .col -->
@@ -53,7 +53,7 @@
             <div class="card">
                 <div class="card-content">
                     <small class="tile-title">Customer Satisfaction</small>
-                    <h2 class="big">95%</h2>
+                    <h2 class="big truncate">95%</h2>
                 </div><!--end .card-body -->
             </div><!--end .card -->
         </div><!--end .col -->
@@ -185,12 +185,15 @@
 
     // Format currencies
 
+    $('#userSales').text('$' + parseFloat($('#userSales').text()).formatMoney(0));
+    $('#userPerformance').text(parseFloat($('#userPerformance').text()).formatMoney(0) + '%');
+
     $('.invoiceTotal').each(function(){
-        $(this).text('$' + parseInt($(this).text()).formatMoney(2));
+        $(this).text('$' + parseFloat($(this).text()).formatMoney(2));
     });
 
     $('.invoiceBalance').each(function(){
-        $(this).text('$' + parseInt($(this).text()).formatMoney(2));
+        $(this).text('$' + parseFloat($(this).text()).formatMoney(2));
     });
 
     // Format date using moment.js
