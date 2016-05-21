@@ -160,6 +160,8 @@
 	<script type="text/javascript" src="assets/js/materialize.override.js"></script>
     <script type="text/javascript" src="assets/js/jeremiah.js"></script>
     <script type="text/javascript">
+        var currentUrl = window.location.origin;
+
         var lineItemChange = function() {
             console.log('qty changed!');
             var qtyChange = $( "#productQty" ).val().trim();
@@ -175,6 +177,23 @@
             var total = prodLineTotal * 1.07;
             total = total.toFixed(2);
             $('#totalPrice').val(total);
+        };
+
+        var clientChange = function(){
+            var newClient = $('#client').val();
+            $.get(currentUrl + "/api/clients/"+newClient)
+                .done(function (data) {
+                    //console.log(data);
+                    $('#custNick').text(data[0].nickname);
+                    if(data[0].client){
+                        $('#custFamily').text(data[0].client.first_name+' '+data[0].client.last_name);
+                    } else {
+                        $('#custFamily').text('None Listed');
+                    }
+                    $('#custFavs').text(data[0].favorites);
+                    $('#custPrefs').text(data[0].preferences);
+                    $('#customerTable').show();
+                })
         };
     </script>
 </body>
