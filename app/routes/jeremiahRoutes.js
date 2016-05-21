@@ -153,6 +153,20 @@ module.exports = function(app){
 
     app.post('/api/new/invoice', function(req, res){
         var newinvoice = req.body;
+        users.findAll({
+            where: {id:newinvoice.userID}
+        })
+            .then(function(results){
+                var before = results[0].sales;
+                var newSale = newinvoice.invoiceSub;
+                newSale = parseFloat(newSale);
+                var after = before.toFixed(2) + newSale.toFixed(2);
+                users.update({
+                    sales: after
+                }, {
+                    where: {id:newinvoice.userID}
+                })
+            });
         invoices.create({
             employee_id: newinvoice.userID,
             customer_id: newinvoice.clientID,
