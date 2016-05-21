@@ -33,7 +33,7 @@ var source = {
             }
         };
 
-var db = source.jeremiah;
+var db = source.jaws;
 
 // connect to the database and log the error or connect as ID
 var sequelize = new Sequelize(db.database, db.user, db.password, {
