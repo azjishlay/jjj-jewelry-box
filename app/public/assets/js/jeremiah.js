@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 105 // Creates a dropdown of 15 years to control year
+    });
+    
     $('.view').click(function(){
         var clickedID = this.id;
         var showID = 'lineItems'+ clickedID;
@@ -127,33 +132,33 @@ $(document).ready(function() {
     $('#clientSubmit').click(function(){
         var currentURL = window.location.origin;
         var userID = $('#userHeader').attr('data-userID');
-        var newInvoice =
+        var newClient =
         {
-            'photo_url': $('').val(),
-            'salutation': $('').val(),
-            'first_name': $('').val(),
-            'last_name': $('').val(),
-            'nickname': $('').val(),
-            'gender': $('').val(),
-            'birthday': $('').val(),
-            'birthstone': $('').val(),
-            'age': $('').val(),
-            'marital_status': $('').val(),
-            'family_members': $('').val(),
-            'anniversary': $('').val(),
-            'phone_number': $('').val(),
-            'email_address': $('').val(),
-            'billing_address': $('').val(),
-            'shipping_address': $('').val(),
-            'preferences': $('').val(),
-            'favorites': $('').val(),
-            'employee_id': $('').val()
+            'photo_url': $('#client_img_url').val(),
+            'salutation': $('#client_salutation').val(),
+            'first_name': $('#client_first_name').val(),
+            'last_name': $('#client_last_name').val(),
+            'nickname': $('#client_nickname').val(),
+            'gender': $('#client_gender').val(),
+            'birthday': $('#client_birthday').val(),
+            'birthstone': $('#client_birthstone').val(),
+            'age': $('#client_age').val(),
+            'marital_status': $('#client_status').val(),
+            'family_members': $('#client').val(),
+            'anniversary': $('#client_anniversary').val(),
+            'phone_number': $('#client_phone_number').val(),
+            'email_address': $('#client_email').val(),
+            'billing_address': $('#client_billing').val(),
+            'shipping_address': $('#client_shipping').val(),
+            'preferences': $('#client_preferences').val(),
+            'favorites': $('#client_favorites').val(),
+            'employee_id': userID
         };
-        console.log(newInvoice);
-        $.post( currentURL + "/api/new/invoice", newInvoice)
+        console.log(newClient);
+        $.post( currentURL + "/api/new/client", newClient)
             .done(function(response){
                 console.log(response);
-                window.location.href = '/invoices';
+                window.location.href = '/clients';
             });
         return false;
     });
