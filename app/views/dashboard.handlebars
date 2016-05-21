@@ -68,7 +68,7 @@
                 <div class="card-content">
                     <div class="card-title">My Invoices</div>
 
-                    <div id="piechart" style="width: 600px; height: 350px;"></div>
+                    <div id="piechart" style="width: 100%; height: 350px;"></div>
 
                 </div>
             </div><!--end .card -->
@@ -172,11 +172,11 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Products', 'Sales'],
-            ['Low End', {{lowEnd}}], ['Mid', {{mid}}], ['High End', {{highEnd}}], ['Luxury', {{luxury}} ]
+            ['Low End', {{user.lowEnd}}], ['Mid', {{user.mid}}], ['High End', {{user.highEnd}}], ['Luxury', {{user.luxury}} ]
         ]);
 
         var options = {
-            title: 'Performance',
+            title: 'Invoices Value Split',
             legend: 'none',
             pieSliceText: 'label',
             slices: {  1: {offset: 0.2},
