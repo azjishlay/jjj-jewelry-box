@@ -26,9 +26,11 @@ module.exports = function(app){
 				employee_id: req.user.id
 			},
 			include: [{
-				model: invoices,
-				order: 'date_created DESC'
-			}]
+				model: invoices
+			}],
+			order: [
+				[invoices, 'date_created', 'DESC']
+			]
 		}).then(function(data){
 			// res.json(data);
 			res.render('dashboard',{
