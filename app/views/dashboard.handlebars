@@ -1,12 +1,14 @@
 <div class="page-header">
     <div class="row valign-wrapper">
         <div class="col l10 m8 left-align">
-            <h4 class="page-title">Hello {{user.name}}!</h4>
+            <h4 class="page-title welcome">Welcome, <span class="special">{{user.name}}</span></h4>
+
         </div>
         <div class="col l2 m4 right-align">
             <img src="{{user.photo}}" class="employee-photo responsive-img circle" alt="{{user.name}}">
         </div>
     </div>
+    <div class="row col l12 tile-title" id="todayDate"></div>
 </div>
 
 <div class="page-content">
@@ -17,7 +19,7 @@
         <div class="col l3 m6 s12">
             <div class="card">
                 <div class="card-content">
-                    <small>Total Sales</small>
+                    <small class="tile-title">Total Sales</small>
                     <h2 class="big">${{user.sales}}</h2>
                 </div><!--end .card-body -->
             </div><!--end .card -->
@@ -28,7 +30,7 @@
         <div class="col l3 m6 s12">
             <div class="card">
                 <div class="card-content">
-                    <small>Sales Performance</small>
+                    <small class="tile-title">Sales Performance</small>
                     <h2 class="big">{{user.performance}}%</h2>
                 </div><!--end .card-body -->
             </div><!--end .card -->
@@ -39,8 +41,8 @@
         <div class="col l3 m6 s12">
             <div class="card">
                 <div class="card-content">
-                    <small>Customer Satisfaction</small>
-                    <h2 class="big">95%</h2>
+                    <small class="tile-title">Pending Work Orders</small>
+                    <h2 class="big">25</h2>
                 </div><!--end .card-body -->
             </div><!--end .card -->
         </div><!--end .col -->
@@ -50,8 +52,8 @@
         <div class="col l3 m6 s12">
             <div class="card">
                 <div class="card-content">
-                    <small>Pending Work Orders</small>
-                    <h2 class="big">25</h2>
+                    <small class="tile-title">Customer Satisfaction</small>
+                    <h2 class="big">95%</h2>
                 </div><!--end .card-body -->
             </div><!--end .card -->
         </div><!--end .col -->
@@ -67,9 +69,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-title">My Invoices</div>
-
-                    <div id="piechart" style="width: 100%; height: 350px;"></div>
-
+                    <div id="piechart"></div>
                 </div>
             </div><!--end .card -->
         </div><!--end .col -->
@@ -138,15 +138,19 @@
 
                                 <div class="row tile-content">
                                     <div class="col l6 m12 s12">
-                                        <div class="tile-title">Favorites</div>
+                                        <div class="tile-title">Last Invoice</div>
                                         <div class="row">
-                                            <a href="#" class="tile-icon"><img src="assets/images/ring_cartier.png" class="products" alt="SKU: 10001"></a>
-                                            <a href="#" class="tile-icon"><img src="assets/images/ring_chanel.png" class="products" alt="SKU: 10001"></a>
+                                            <p>Amount Due:
+                                                <span class="tile-text invoiceTotal">{{invoices.0.total}}</span></p>
+                                            <p>Amount Paid:
+                                                <span class="tile-text invoiceBalance">{{invoices.0.payment_amount}}</span></p>
+                                            <p>Transaction Date:
+                                                <span class="tile-text invoiceDate">{{invoices.0.date_created}}</span></p>
                                         </div>
 
                                     </div>
                                     <div class="col l6 m12 s12">
-                                        <div class="tile-title">Recommendations</div>
+                                        <div class="tile-title">Favorites</div>
                                         <div class="row products">
                                             <a href="#" class="tile-icon"><img src="assets/images/ring_cartier.png" class="products" alt="SKU: 10001"></a>
                                             <a href="#" class="tile-icon"><img src="assets/images/ring_chanel.png" class="products" alt="SKU: 10001"></a>
@@ -166,6 +170,39 @@
 </div>
 
 <script>
+
+    // Generic function to format currency
+    Number.prototype.formatMoney = function(c, d, t){
+        var n = this,
+                c = isNaN(c = Math.abs(c)) ? 2 : c,
+                d = d == undefined ? "." : d,
+                t = t == undefined ? "," : t,
+                s = n < 0 ? "-" : "",
+                i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+                j = (j = i.length) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    };
+
+    // Format currencies
+
+    $('.invoiceTotal').each(function(){
+        $(this).text('$' + parseInt($(this).text()).formatMoney(2));
+    });
+
+    $('.invoiceBalance').each(function(){
+        $(this).text('$' + parseInt($(this).text()).formatMoney(2));
+    });
+
+    // Format date using moment.js
+
+    $('#todayDate').text(moment().format("dddd, MMMM Do YYYY"));
+
+    $('.invoiceDate').each(function(){
+        $(this).text(moment($(this).text()).format("MM/DD/YYYY"));
+    });
+</script>
+
+<script>
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -176,17 +213,35 @@
         ]);
 
         var options = {
-            title: 'Invoices Value Split',
-            legend: 'none',
-            pieSliceText: 'label',
-            slices: {  1: {offset: 0.2},
-                2: {offset: 0.3},
-                14: {offset: 0.4},
-                15: {offset: 0.5}
-            }
+            backgroundColor: '#e5e6e6',
+            chartArea: {
+                top: 20,
+                bottom: 20,
+                left: 20,
+                right: 20,
+                height: '100%',
+            },
+            height: 400,
+//            slices: {
+//                2: {
+//                    offset: 0.2
+//                }
+//            },
+            pieSliceText: 'value',
+            pieHole: 0.4,
+            legend: {
+                alignment: 'center',
+                position: 'labeled',
+                textStyle: {
+                    color: '#888888',
+                    fontSize: 14}},
+            colors: ['#935463', '#938454', '#549384', '#546393'],
+            fontSize: '20',
+            fontName: 'Josefin Sans'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
         chart.draw(data, options);
     }
 </script>
