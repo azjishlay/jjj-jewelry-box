@@ -152,9 +152,11 @@ module.exports = function(app){
         })
             .then(function(results){
                 var before = results[0].sales;
+                before = parseFloat(before);
                 var newSale = newinvoice.invoiceSub;
                 newSale = parseFloat(newSale);
-                var after = before.toFixed(2) + newSale.toFixed(2);
+                var after = before + newSale;
+                after = after.toFixed(2);
                 users.update({
                     sales: after
                 }, {
