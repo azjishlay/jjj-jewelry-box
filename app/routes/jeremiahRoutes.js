@@ -52,13 +52,7 @@ module.exports = function(app){
         });
     });
 
-    app.get('/create-client', function(req, res){
-        res.render('create-client');
-    });
 
-    app.get('/create-product', function(req, res){
-        res.render('create-product');
-    });
 
     app.get('/products', loggedIn, function(req, res, next){
         products.findAll({
@@ -75,31 +69,31 @@ module.exports = function(app){
         });
     });
 
-    app.get('/api/users',function (req,res){
+    app.get('/api/users', loggedIn, function(req, res, next){
         users.findAll({}).then(function(result){
             res.json(result);
         });
     });
 
-    app.get('/api/clients',function (req,res){
+    app.get('/api/clients', loggedIn, function(req, res, next){
         clients.findAll({}).then(function(result){
             res.json(result);
         });
     });
 
-    app.get('/api/products',function (req,res){
+    app.get('/api/products', loggedIn, function(req, res, next){
         products.findAll({}).then(function(result){
             res.json(result);
         });
     });
 
-    app.get('/api/categories',function (req,res){
+    app.get('/api/categories', loggedIn, function(req, res, next){
         product_categories.findAll({}).then(function(result){
             res.json(result);
         });
     });
 
-    app.get('/api/products/:id',function (req,res){
+    app.get('/api/products/:id', loggedIn, function(req, res, next){
         var reqID = req.params.id;
         products.findAll({
             where:{id:reqID}
@@ -126,7 +120,7 @@ module.exports = function(app){
         });
     });
 
-    app.get('/api/clients/:id',function (req,res){
+    app.get('/api/clients/:id', loggedIn, function(req, res, next){
         var reqID = req.params.id;
         clients.belongsTo(clients,{foreignKey:'family_members'});
         clients.findAll({
@@ -141,7 +135,7 @@ module.exports = function(app){
         });
     });
 
-    app.get('/api/skuSearch/:sku',function (req,res){
+    app.get('/api/skuSearch/:sku', loggedIn, function(req, res, next){
         var sku = req.params.sku;
         products.findAll({
             where: {name:{$like: '%'+sku+'%'}}
@@ -151,7 +145,7 @@ module.exports = function(app){
         });
     });
 
-    app.post('/api/new/invoice', function(req, res){
+    app.post('/api/new/invoice', loggedIn, function(req, res, next){
         var newinvoice = req.body;
         users.findAll({
             where: {id:newinvoice.userID}
@@ -193,4 +187,64 @@ module.exports = function(app){
             })
     });
 
+    app.get('/create-client', loggedIn, function(req, res, next){
+        res.render('create-client');
+    });
+
+    app.post('/api/new/client', loggedIn, function(req, res, next){
+        var newclient = req.body;
+        clients.create({
+            photo_url: newclient.photo_url,
+            salutation: newclient.salutation,
+            first_name: newclient.first_name,
+            last_name: newclient.last_name,
+            nickname: newclient.nickname,
+            gender: newclient.gender,
+            birthday: newclient.birthday,
+            birthstone: newclient.birthstone,
+            age: newclient.age,
+            marital_status: newclient.marital_status,
+            family_members: newclient.family_members,
+            anniversary: newclient.anniversary,
+            phone_number: newclient.phone_number,
+            email_address: newclient.email_address,
+            billing_address: newclient.billing_address,
+            shipping_address: newclient.shipping_address,
+            preferences: newclient.preferences,
+            favorites: newclient.favorites,
+            employee_id: req.user.id
+
+        })
+            .then(function (results) {
+                //console.log(results.dataValues.id);
+                res.json(results);
+            })
+    });
+
+    app.get('/create-product', loggedIn, function(req, res, next){
+        res.render('create-product');
+    });
+
+    app.post('/api/new/product', loggedIn, function(req, res, next){
+        var newproduct = req.body;
+        products.create({
+            category_id: newproduct.category_id,
+            sku: newproduct.sku,
+            serial_number: newproduct.serial_number,
+            name: newproduct.name,
+            designer: newproduct.designer,
+            cost: newproduct.cost,
+            price: newproduct.price,
+            quantity: newproduct.quantity,
+            materials: newproduct.materials,
+            size: newproduct.size,
+            description: newproduct.description,
+            image_url: newproduct.image_url
+
+        })
+            .then(function (results) {
+                //console.log(results.dataValues.id);
+                res.json(results);
+            })
+    });
 };

@@ -120,6 +120,83 @@ $(document).ready(function() {
         return false;
     });
 
+    $('#clientReset').click(function(){
+        location.reload();
+    });
+
+    $('#clientSubmit').click(function(){
+        var currentURL = window.location.origin;
+        var userID = $('#userHeader').attr('data-userID');
+        var newInvoice =
+        {
+            'photo_url': $('').val(),
+            'salutation': $('').val(),
+            'first_name': $('').val(),
+            'last_name': $('').val(),
+            'nickname': $('').val(),
+            'gender': $('').val(),
+            'birthday': $('').val(),
+            'birthstone': $('').val(),
+            'age': $('').val(),
+            'marital_status': $('').val(),
+            'family_members': $('').val(),
+            'anniversary': $('').val(),
+            'phone_number': $('').val(),
+            'email_address': $('').val(),
+            'billing_address': $('').val(),
+            'shipping_address': $('').val(),
+            'preferences': $('').val(),
+            'favorites': $('').val(),
+            'employee_id': $('').val()
+        };
+        console.log(newInvoice);
+        $.post( currentURL + "/api/new/invoice", newInvoice)
+            .done(function(response){
+                console.log(response);
+                window.location.href = '/invoices';
+            });
+        return false;
+    });
+
+    $('#productReset').click(function(){
+        location.reload();
+    });
+
+    $('#productSubmit').click(function(){
+        var currentURL = window.location.origin;
+
+        var costDollars = $('#product_cost_dollars').val();
+        var costCents = $('#product_cost_cents').val();
+        var priceDollars = $('#product_price_dollars').val();
+        var priceCents = $('#product_price_cents').val();
+
+        var cost = costDollars+'.'+costCents;
+        var price = priceDollars+'.'+priceCents;
+
+        var newProduct =
+        {
+            'category_id': $('#product_category_id').val(),
+            'sku': $('#product_sku').val(),
+            'serial_number': $('#product_serial_number').val(),
+            'name': $('#product_name').val(),
+            'designer': $('#product_designer').val(),
+            'cost': cost,
+            'price': price,
+            'quantity': $('#product_quantity').val(),
+            'materials': $('#product_materials').val(),
+            'size': $('#product_size').val(),
+            'description': $('#product_description').val(),
+            'image_url': $('#product_img_url').val()
+        };
+        console.log(newProduct);
+        $.post( currentURL + "/api/new/product", newProduct)
+            .done(function(response){
+                console.log(response);
+                window.location.href = '/products';
+            });
+        return false;
+    });
+    
     $.get(currentUrl + "/api/clients")
         .done(function(data){
             for (var i = 0; i < data.length; i++) {
@@ -150,7 +227,7 @@ $(document).ready(function() {
                 var productName = data[i].name;
                 var productID = data[i].id;
                 var option = '<option value="'+productID+'">'+productName+'</option>';
-                $("#product_category_id").append(option);
+                //$("#product_category_id").append(option);
             }
         });
     
