@@ -16,108 +16,154 @@
                     <div class="row">
                         <form class="col s12 form-add-new">
                             <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="client_first_name" name="client_first_name" type="text" class="validate">
+                                    <label for="client_first_name">First Name:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="client_last_name" name="client_last_name" type="text" class="validate">
+                                    <label for="client_last_name">Last Name:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <select id="client_salutation" name="client_salutation">
+                                        <option value="" disabled>Select</option>
+                                        <option value="Mr">Mr</option>
+                                        <option value="Mrs">Mrs</option>
+                                        <option value="Mrs">Ms</option>
+                                        <option value="Mrs">Dr</option>
+                                    </select>
+                                    <label for="client_salutation">Salutation:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="client_nickname" name="client_nickname" type="text" class="validate">
+                                    <label for="client_nickname">Nickname:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <select id="client_gender" name="client_gender">
+                                        <option value="" disabled>Select</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <label for="client_salutation">Gender:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="client_birthday" name="client_birthday" type="date" class="datepicker">
+                                    <label for="client_birthday">Birthday:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <select id="client_birthstone" name="client_birthstone">
+                                        <option value="" disabled>Select</option>
+                                        <option value="Garnet">Garnet</option>
+                                        <option value="Amethyst">Amethyst</option>
+                                        <option value="Aquamarine">Aquamarine</option>
+                                        <option value="Diamond">Diamond</option>
+                                        <option value="Emerald">Emerald</option>
+                                        <option value="Pearl">Pearl</option>
+                                        <option value="Ruby">Ruby</option>
+                                        <option value="Peridot">Peridot</option>
+                                        <option value="Sapphire">Sapphire</option>
+                                        <option value="Opal">Opal</option>
+                                        <option value="Citrine">Citrine</option>
+                                        <option value="Turquoise">Turquoise</option>
+                                    </select>
+                                    <label for="client_salutation">Salutation:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="client_age" name="client_age" type="text" class="validate">
+                                    <label for="client_age">Age:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <select id="client_status" name="client_status">
+                                        <option value="" disabled>Select</option>
+                                        <option value="true">In Relationship</option>
+                                        <option value="false">Not In Relationship</option>
+                                    </select>
+                                    <label for="client_status">Relationship Status:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="client_anniversary" name="client_anniversary" type="date" class="datepicker">
+                                    <label for="client_anniversary">Anniversary:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="input-field col s12">
-                                    <select id="product_category_id" name="product_category_id" class="browser-default">
-                                        <option value="0" disabled selected>Select Product Category</option>
+                                    <select id="client" name="client" class="browser-default" style="margin-top:0px;">
+                                        <option value="0" disabled>Family Member:</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="product_sku" name="product_sku" type="text" class="validate">
-                                    <label for="product_sku">SKU:</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input id="product_serial_number" name="product_serial_number" type="text" class="validate">
-                                    <label for="product_serial_number">Serial Number:</label>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="product_name" name="product_name" type="text" class="validate">
-                                    <label for="product_name">Product Name:</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input id="product_designer" name="product_designer" type="text" class="validate">
-                                    <label for="product_designer">Designer/Brand:</label>
+                                <div class="input-field col s12">
+                                    <textarea id="client_preferences" name="client_preferences" class="validate materialize-textarea" length="600"></textarea>
+                                    <label for="client_preferences" class="">Preferences:</label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea id="product_description" name="product_description" class="validate materialize-textarea" length="600"></textarea>
-                                    <label for="product_description" class="">Product Description:</label>
+                                    <textarea id="client_favorites" name="client_favorites" class="validate materialize-textarea" length="120"></textarea>
+                                    <label for="client_favorites" class="">Favorites:</label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea id="product_materials" name="product_materials" class="validate materialize-textarea" length="120"></textarea>
-                                    <label for="product_materials" class="">Product Materials:</label>
+                                    <input id="client_img_url" name="client_img_url" type="text" class="validate">
+                                    <label for="client_img_url" class="">Image URL:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="client_phone_number" name="client_phone_number" type="text" class="validate">
+                                    <label for="client_phone_number">Phone Number:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="client_email" name="client_email" type="text" class="validate">
+                                    <label for="client_email">Email:</label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="product_img_url" name="product_img_url" type="text" class="validate">
-                                    <label for="product_img_url" class="">Product Image URL:</label>
+                                    <input id="client_billing" name="client_billing" type="text" class="validate">
+                                    <label for="client_billing" class="">Billing Address:</label>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="input-field col s6 numerical">
-                                    <input id="product_size" name="product_size" type="text" class="validate">
-                                    <label for="product_size" class="">Product Size:</label>
-                                </div>
-                                <div class="input-field col s6 numerical">
-                                    <input id="product_quantity" name="product_quantity" type="text" class="validate" maxlength="11" />
-                                    <label for="product_quantity" class="">Quantity Available:</label>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="inline-group col s6">
-                                    <div class="inline-label">Unit Cost:</div>
-                                    <div class="inline-input row">
-                                        <div class="input-field col s8 numerical">
-                                            <i class="prefix">$</i>
-                                            <input id="product_cost_dollars" name="product_cost_dollars" type="text" class="validate" maxlength="8" />
-                                            <label for="product_cost_dollars" class=""> </label>
-                                        </div>
-                                        <div class="input-field col s4 numerical">
-                                            <i class="prefix">.</i>
-                                            <input id="product_cost_cents" name="product_cost_cents" type="text" class="validate" maxlength="2" />
-                                            <label for="product_cost_cents" class=""> </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="inline-group col s6">
-                                    <div class="inline-label">Unit Price:</div>
-                                    <div class="inline-input row">
-                                        <div class="input-field col s8 numerical">
-                                            <i class="prefix">$</i>
-                                            <input id="product_price_dollars" name="product_price_dollars" type="text" class="validate" maxlength="8" />
-                                            <label for="product_price_dollars" class=""> </label>
-                                        </div>
-                                        <div class="input-field col s4 numerical">
-                                            <i class="prefix">.</i>
-                                            <input id="product_price_cents" name="product_price_cents" type="text" class="validate" maxlength="2" />
-                                            <label for="product_price_cents" class=""> </label>
-                                        </div>
-                                    </div>
+                                <div class="input-field col s12">
+                                    <input id="client_shipping" name="client_shipping" type="text" class="validate">
+                                    <label for="client_shipping" class="">Shipping Address:</label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="spacer-10"></div>
-                                <div class="input-field col s12 right-align">
-                                    <a class="btn">Reset</a>
-                                    <a class="btn">Submit</a>
+                                <div class="input-field col s6">
+                                    <p>EMPLOYEE:</p>
+                                    <h4 id="userHeader" data-userID="{{user.id}}">{{user.name}}</h4>
+                                </div>
+                                <div class="input-field col s6 right-align">
+                                    <a class="btn" id="clientReset">Reset</a>
+                                    <a class="btn" id="clientSubmit">Submit</a>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

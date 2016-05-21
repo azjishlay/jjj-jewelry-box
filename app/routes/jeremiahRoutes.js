@@ -188,7 +188,11 @@ module.exports = function(app){
     });
 
     app.get('/create-client', loggedIn, function(req, res, next){
-        res.render('create-client');
+        res.render('create-client',{
+            // isAuth returns true or false
+            isAuthenticated: req.isAuthenticated(),
+            user: req.user
+        });
     });
 
     app.post('/api/new/client', loggedIn, function(req, res, next){
@@ -222,7 +226,11 @@ module.exports = function(app){
     });
 
     app.get('/create-product', loggedIn, function(req, res, next){
-        res.render('create-product');
+        res.render('create-product',{
+            // isAuth returns true or false
+            isAuthenticated: req.isAuthenticated(),
+            user: req.user
+        });
     });
 
     app.post('/api/new/product', loggedIn, function(req, res, next){
