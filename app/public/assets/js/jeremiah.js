@@ -104,7 +104,7 @@ $(document).ready(function() {
             'userID': userID,
             'clientID': $("#client").val(),
             'productID': currentSearch,
-            'productPrice': $("#productPrice").val(),
+            'productPrice': $("#subtotal").val(),
             'productQty': $("#productQty").val(),
             'productDisc': $("#productDisc").val(),
             'invoiceSub':$('#subtotal').val(),
@@ -113,10 +113,10 @@ $(document).ready(function() {
         };
         console.log(newInvoice);
         $.post( currentURL + "/api/new/invoice", newInvoice)
-            .done(function(data){
-                console.log(data);
+            .done(function(response){
+                console.log(response);
             });
-        //window.location.href = '/invoices';
+        window.location.href = '/invoices';
         return false;
     });
 
@@ -135,7 +135,7 @@ $(document).ready(function() {
     $.get(currentUrl + "/api/categories")
         .done(function(data){
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i].name+' - '+data[i].id);
+                //console.log(data[i].name+' - '+data[i].id);
                 var category = data[i].name;
                 var categoryID = data[i].id;
                 var option = '<option value="'+categoryID+'">'+category+'</option>';
@@ -146,7 +146,7 @@ $(document).ready(function() {
     $.get(currentUrl + "/api/products")
         .done(function(data){
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i].name+' - '+data[i].id);
+                //console.log(data[i].name+' - '+data[i].id);
                 var productName = data[i].name;
                 var productID = data[i].id;
                 var option = '<option value="'+productID+'">'+productName+'</option>';

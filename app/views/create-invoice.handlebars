@@ -24,9 +24,27 @@
                                 </div>
 
                                 <div class="input-field col s6">
-                                    <select id="client" name="client" class="browser-default">
+                                    <select id="client" name="client" class="browser-default" onblur="clientChange()">
                                         <option value="0" disabled>Select Customer:</option>
                                     </select>
+                                    <table id="customerTable" style="display: none">
+                                        <thead>
+                                            <tr>
+                                                <th>Nick Name</th>
+                                                <th>Family</th>
+                                                <th>Favorites</th>
+                                                <th>Preferences</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="custNick"></td>
+                                                <td id="custFamily"></td>
+                                                <td id="custFavs"></td>
+                                                <td id="custPrefs"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 

@@ -1,6 +1,6 @@
 <!--Page Header-->
 <div class="page-header">
-    <h4 class="page-title">All Clients</h4>
+    <h4 class="page-title">Products</h4>
 </div>
 
 <div class="page-content">
@@ -12,6 +12,7 @@
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
+            <th></th>
             <th>Name</th>
             <th>Designer</th>
             <th>SKU</th>
@@ -25,6 +26,7 @@
         <tbody>
         {{#products}}
             <tr>
+                <td><img src="{{image_url}}" alt="{{name}}" style="max-height:100px;"></td>
                 <td>{{name}}</td>
                 <td>{{designer}}</td>
                 <td>{{sku}}</td>
@@ -35,7 +37,7 @@
                 <td>{{category.name}}</td>
             </tr>
             <tr id="prodDetails{{id}}" style="display:none">
-                <td colspan="8" style="padding: 15px 50px">
+                <td colspan="9" style="padding: 15px 50px">
                     <table class="table table-bordered table-striped z-depth-2 productTable">
                         <thead>
                         <tr>

@@ -1,6 +1,6 @@
 <!--Page Header-->
 <div class="page-header">
-    <h4 class="page-title">All Clients</h4>
+    <h4 class="page-title">Clients</h4>
 </div>
 
 <div class="page-content">
@@ -12,6 +12,7 @@
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
+            <th></th>
             <th>Name</th>
             <th>Gender</th>
             <th>Birthday</th>
@@ -23,6 +24,7 @@
         <tbody>
         {{#clients}}
             <tr>
+                <td><img src="{{photo_url}}" alt="{{salutation}} {{first_name}} {{last_name}}" style="max-height:100px;"></td>
                 <td>{{salutation}} {{first_name}} {{last_name}}</td>
                 <td>{{gender}}</td>
                 <td>{{birthday}}</td>

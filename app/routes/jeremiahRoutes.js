@@ -39,7 +39,8 @@ module.exports = function(app){
             },{
                 model: line_items,
                 include:[products]
-            }]
+            }],
+            order: 'id DESC'
         }).then(function(result){
             //var data = {'invoices':result};
             //res.json(data);
@@ -55,29 +56,11 @@ module.exports = function(app){
         res.render('create-client');
     });
 
-    app.get('/clients', function(req, res){
-        clients.belongsTo(clients,{foreignKey:'family_members'});
-        clients.findAll({
-            include:[{
-                model: clients
-            },{
-                model: users
-            }]
-        }).then(function(result){
-            // res.json(result);
-            res.render('clients',{'clients':result,
-                // isAuth returns true or false
-                isAuthenticated: req.isAuthenticated(),
-                user: req.user
-            });
-        });
-    });
-
     app.get('/create-product', function(req, res){
         res.render('create-product');
     });
 
-    app.get('/products', function(req, res){
+    app.get('/products', loggedIn, function(req, res, next){
         products.findAll({
             include:[{
                 model: product_categories
@@ -125,6 +108,39 @@ module.exports = function(app){
         });
     });
 
+    app.get('/clients', loggedIn, function(req, res, next){
+        clients.belongsTo(clients,{foreignKey:'family_members'});
+        clients.findAll({
+            include:[{
+                model: clients
+            },{
+                model: users
+            }]
+        }).then(function(result){
+            // res.json(result);
+            res.render('clients',{'clients':result,
+                // isAuth returns true or false
+                isAuthenticated: req.isAuthenticated(),
+                user: req.user
+            });
+        });
+    });
+
+    app.get('/api/clients/:id',function (req,res){
+        var reqID = req.params.id;
+        clients.belongsTo(clients,{foreignKey:'family_members'});
+        clients.findAll({
+            include:[{
+                model: clients
+            }],
+            where:{
+                id:reqID
+            }
+        }).then(function(result){
+            res.json(result);
+        });
+    });
+
     app.get('/api/skuSearch/:sku',function (req,res){
         var sku = req.params.sku;
         products.findAll({
@@ -147,26 +163,20 @@ module.exports = function(app){
             payment_amount: newinvoice.invoiceTot,
             payment_type: 'credit card'
         })
-            .then(
-                line_items.create({
-                    product_id: newinvoice.productID,
-                    date_created: sequelize.fn('NOW'),
-                    unit_price: newinvoice.productPrice,
-                    quantity: newinvoice.productQty,
-                    total: newinvoice.productID,
-                    discount: "0"
-                }).then (
-                    res.json()
-                )
-            )
-    });
-
-    app.get('/work-orders', function(req, res){
-        res.render('work-orders');
-    });
-
-    app.get('/create-work-order', function(req, res){
-        res.render('create-work-order');
+            .then(function (results) {
+                    //console.log(results.dataValues.id);
+                    line_items.create({
+                        product_id: newinvoice.productID,
+                        invoice_id: results.dataValues.id,
+                        date_created: sequelize.fn('NOW'),
+                        unit_price: newinvoice.productPrice,
+                        quantity: newinvoice.productQty,
+                        total: newinvoice.productID,
+                        discount: "0"
+                    }).then (function (results2) {
+                        res.json(results2);
+                    })
+            })
     });
 
 };
