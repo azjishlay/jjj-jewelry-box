@@ -182,7 +182,7 @@ module.exports = function(app){
                         unit_price: newinvoice.productPrice,
                         quantity: newinvoice.productQty,
                         total: newinvoice.productID,
-                        discount: "0"
+                        discount: newinvoice.productDisc
                     }).then (function (results2) {
                         res.json(results2);
                     })
