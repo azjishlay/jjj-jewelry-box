@@ -4,8 +4,6 @@ JJJ-Jewelry Box is a functional point of sale system built in Node.JS for boutiq
 
 You can find a live demo link here: <a href="http://jjj-jewelry-box.herokuapp.com/" target="_blank">http://jjj-jewelry-box.herokuapp.com/</a> (demo user: jasmine / pass: 1234)
 
-You can find a live demo link <a href="http://jjj-box.herokuapp.com/" target="_blank">here</a>.
-
 We have also created a video of us demoing the product:
 
 <a href="https://www.youtube.com/watch?v=jCEXaylvxOU" target="_blank"><img src="http://i.imgur.com/xyMnpNI.png" alt="JJJ - Jewelry Box"></a>
