@@ -1,10 +1,15 @@
-# the-jewelry-box
+# JJJ-Jewelry Box
 
-JJJ-Jewelry Box is a functional point of sale system built in Node.JS for boutique jewelry businesses. The program utilizes MySQL as a database, Express.js for server setup, Sequelize.js as an ORM, Handlebars.js for templating, Passport.js for user authentication, and Materialize for front-end CSS. The program allows for users to create and view products, clients, and invoices. It also provides users with a main dashboard that displays key business intelligence from the database.
+A CRM/POS system for a boutique jewelry shop. Upon logging in, users are presented with a business intelligence dashboard that displays KPI's such as sales targets, amounts per invoice, and recent client transactions. Users can also view and create new clients, products, and invoices.
 
-You can find a live demo link here: <a href="http://jjj-jewelry-box.herokuapp.com/" target="_blank">http://jjj-jewelry-box.herokuapp.com/</a> (demo user: jasmine / pass: 1234)
+Built with Node.js, Express.js, MySQL DB, Sequelize.js, Handlebars.js, Passport.js User Authentication, and Materialize CSS.
 
-We have also created a video of us demoing the product:
+↗️: [http://jjj-jewelry-box.herokuapp.com](http://jjj-jewelry-box.herokuapp.com)
+---
+
+Demo user: _jasmine_ / pwd: _1234_
+
+Watch this video of us demoing the product:
 
 <a href="https://www.youtube.com/watch?v=jCEXaylvxOU" target="_blank"><img src="http://i.imgur.com/xyMnpNI.png" alt="JJJ - Jewelry Box"></a>
 
@@ -12,6 +17,8 @@ We have also created a video of us demoing the product:
 
 - This is a proof of concept built in two weeks. We plan on adding more features in the future.
 
-## Questions
+## Contact
 
-For questions, contact Jeremiah Scanlon (jeremiah.j.scanlon@gmail.com), Jasmin Li (li.jasmine.j@gmail.com), or Jerome Carless (carless.jerome@gmail.com).
+* Jeremiah Scanlon (jeremiah.j.scanlon@gmail.com)
+* Jasmine Li (li.jasmine.j@gmail.com)
+* Jerome Carless (carless.jerome@gmail.com)
